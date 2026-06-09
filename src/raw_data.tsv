@@ -1,0 +1,294 @@
+=== TALANGAN ===
+id	tanggal	id_anggaran_pemberi	id_anggaran_penerima	jumlah	keterangan	status	tanggal_lunas	bukti	timestamp
+TL-C97CE0AD	2026-01-17	4	60	2000000	Rehab Mushola Tahsinul Ahlaq	Belum Lunas			6/5/2026 17:20:21
+TL-6A32993C	2026-03-26	13	7	430000	ATK ( Kertas, Pulpen, Map, Tinta, Dll)	Belum Lunas			6/5/2026 18:08:25
+TL-3EAEAC12	2026-03-28	13	7	1500000	ATK 	Belum Lunas			6/5/2026 18:09:30
+TL-DF000F9A	2026-01-04	13	47	700000	Solar Beco (Saep)	Belum Lunas			6/5/2026 18:12:15
+TL-68121E8E	2026-04-01	13	45	1300000	Pengurugan Pasar Desa 	Belum Lunas			6/5/2026 18:14:01
+TL-A8F269A9	2026-04-01	13	9	300000	Pengharum Ruangan 	Belum Lunas			6/5/2026 18:16:09
+TL-2AAD6724	2026-04-07	13	8	220000	Bayar Hutang Listrik Ke Dulloh a/n Topik	Belum Lunas			6/5/2026 18:18:47
+TL-18559094	2026-04-20	12	13	1800000	Langganan Listrik dan Internet Bulan April	Belum Lunas			6/5/2026 18:21:27
+TL-C3478E85	2026-04-20	13	7	250000	Aldo Beberes Pasar	Belum Lunas			6/5/2026 18:28:20
+TL-9F005F42	2026-05-13	13	73	880000	Konsumsi Hari Terakhir Inspektorat	Belum Lunas			6/5/2026 18:34:11
+TL-BEC4C8E9	2026-06-03	61	13	1500000	Listrik dan Internet Mei dan Juni	Belum Lunas			6/5/2026 18:39:32
+TL-9018F4DC	2026-06-03	23	13	350000	Kekurangan Bayar Listrik dan Internet Bulan Mei dan Juni	Belum Lunas			6/5/2026 18:40:22
+TL-56DDADBC	2026-04-25	13	17	500000	"Rincian 
+Ganti busi 100 rb
+Ganti kabel lan baut2 150 
+Rb
+Ongkos servis 200 rb 
+Udud lan kopi 50 rb
+Total 500 rb"	Belum Lunas			6/5/2026 18:41:25
+TL-03C0A920	2026-03-16	12	11	2000000	Honor Kemit Bulan Februari	Belum Lunas			6/5/2026 18:44:04
+TL-B84C966F	2026-03-17	12	67	3700000	Talangan MUI	Belum Lunas			6/5/2026 18:47:10
+TL-DAFDB763	2025-04-15	12	11	4000000	Honor Kemit Maret dan April	Belum Lunas			6/5/2026 18:48:11
+TL-66914D27	2026-02-17	12	65	6500000	Talangi LPM	Belum Lunas			6/5/2026 18:51:43
+TL-F21806D3	2026-05-10	23	9	300000	Pengharum Ruangan	Belum Lunas			6/5/2026 19:00:59
+TL-5C446451	2026-05-25	23	73	1000000	Samidi ( Bon Honor Pemungut Sampah)	Belum Lunas			6/5/2026 19:02:24
+TL-EF98282B	2026-05-25	28	7	170817	ATK dll	Belum Lunas			6/5/2026 19:04:52
+TL-C6944008	2026-05-02	47	18	250000	Kopi Pengurasan : 50.000 Cuci Ac 2 Bh : 200.000	Belum Lunas			6/5/2026 19:13:55
+TL-F1F034D8	2026-05-25	47	7	100000	Konsumsi Bagi Honor RT/RW	Belum Lunas			6/5/2026 19:14:43
+TL-C1770E91	2026-03-15	60	73	1700000	Konsumsi Hari Pertama Inspektorat	Belum Lunas			6/5/2026 19:20:06
+TL-4E7FDC84	2026-05-06	68	9	300000	Pengharum Ruangan	Belum Lunas			6/5/2026 19:26:27
+TL-E38CD5FE	2026-05-06	68	7	700000	Honor Pengambilan Uang 2 x (Ardi, mamuri, Tangguh)	Belum Lunas			6/5/2026 19:27:55
+TL-6827CA03	2026-05-13	68	73	2400000	Inspektorat 	Belum Lunas			6/5/2026 19:28:55
+TL-5FED62E3	2026-05-13	71	73	3600000	Inspektorat	Belum Lunas			6/5/2026 19:30:47
+TL-52043511	2026-02-04	72	7	400000	Penebangan Pohon Wanaiman	Belum Lunas			6/5/2026 19:33:05
+TL-A29CE3E5	2026-03-14	72	7	800000	Pupuk Lapangan Madsinah : 100.000 Stempel Mitra Cai : 100.000 Amplop Survei Mitra Cai : 400.000 Referensi Bank : 100.000 Saep ke Dinas Pertanina : 100.000	Belum Lunas			6/5/2026 19:34:26
+TL-A8BD7D20	2026-02-10	72	55	300000	Imtihan 	Belum Lunas			6/5/2026 19:37:02
+TL-C903D6B4	2026-02-11	72	18	800000	Service Ac Ruanngan Pa Kuwu	Belum Lunas			6/5/2026 19:38:29
+TL-DA7D69DF	2026-02-12	72	8	300000	Tagihan Alat Listrik Pasar Desa Opik	Belum Lunas			6/5/2026 19:39:14
+TL-4495C986	2026-02-19	72	62	350000	Tarling Mushola As-Shidiqiyah	Belum Lunas			6/5/2026 19:41:12
+TL-200F62E9	2026-03-10	72	52	10000000	THR KE IBU KUWU	Belum Lunas			6/5/2026 19:46:42
+TL-EEF5A23E	2026-02-14	72	7	500000	Bantuan Bangun Rumah Wa Nunung	Belum Lunas			6/5/2026 19:57:14
+TL-CD312A86	2026-03-02	72	9	300000	Pengharum Ruangan	Belum Lunas			6/5/2026 19:59:51
+TL-548BE3E0	2026-06-02	12	13	2000000	Langganan Listrik dan Internet Mei Juni 	Belum Lunas			6/5/2026 20:01:49
+TL-006ADFE1	2026-01-17	4	73	1000000	Kekurangan Tahsinula Ahlaq	Belum Lunas			6/5/2026 20:09:25
+TL-840B1905	2025-06-03	23	73	200000	Bensin Samidi Antar Jagung ke H. Ade	Belum Lunas			6/5/2026 20:13:43
+TL-16DFAF57	2026-06-05	23	68	150000	Obat Kompos Pa Yogi	Belum Lunas			6/5/2026 20:27:10
+TL-DA6AA5AC	2026-06-05	47	68	43600	Obat Kompos Pa yogi	Belum Lunas			6/5/2026 20:27:54
+TL-406BAA09	2026-06-05	60	68	300000	Obat Kompos Pa yogi	Belum Lunas			6/5/2026 20:28:46
+TL-A4085233	2026-06-05	13	73	87000	Konsumsi Tamu kecamatan Pak Amrin 	Belum Lunas			6/5/2026 20:30:34
+
+=== HUTANG ===
+id	tanggal	id_anggaran_pemberi	peminjam	jumlah	keterangan	status	tanggal_lunas	bukti	timestamp
+HT-15C54FC4	2026-01-17	4	IMAM	1500000	Keperluan Mendadak	Belum Lunas			6/5/2026 17:17:47
+HT-6B4B4596	2026-01-17	4	ARDI	1000000	Keperluan Mendadak	Belum Lunas			6/5/2026 17:19:09
+HT-C62B693D	2026-01-14	4	RIO (KUWU)	45000000	-	Belum Lunas			6/5/2026 17:24:44
+HT-A35E4CBF	2026-01-17	4	CEPAK	475000	Upah TUKANG Nyi Tosa	Belum Lunas			6/5/2026 17:26:42
+HT-9E5F126E	2026-01-17	4	KAMINAH	1000000	Darurat	Belum Lunas			6/5/2026 17:27:09
+HT-125486EF	2026-04-01	13	KUWU	3500000	Dana Mendesak	Belum Lunas			6/5/2026 18:18:07
+HT-CC7D62D9	2026-03-17	12	IMAM	1000000	Darurat	Belum Lunas			6/5/2026 18:45:37
+HT-D2F7697F	2026-03-17	12	ARDI	4000000	Darurat	Belum Lunas			6/5/2026 18:46:08
+HT-BA4AA2BD	2026-03-17	12	ILHAM	3000000	DARURAT	Belum Lunas			6/5/2026 18:46:38
+HT-B63E0F66	2026-04-24	12	KUWU	1000000	Hutang Kuwu	Belum Lunas			6/5/2026 18:48:39
+HT-144D89C7	2026-06-24	12	IMAM	3000000	Sekolah	Belum Lunas			6/5/2026 18:49:07
+HT-63DB20B6	2026-04-26	12	ARDI	2000000	Hutang Ardi	Belum Lunas			6/5/2026 18:49:42
+HT-EFC16D10	2024-06-05	12	IMAM	1000000	Boca Sekolah	Belum Lunas			6/5/2026 18:50:08
+HT-760C4370	2026-04-28	23	KUWU	5200000	Uang 10.000.000 diambil Ardi\nyang 4.800 talangan Sampah	Belum Lunas			6/5/2026 18:57:17
+HT-57581EB0	2026-04-30	34	KUWU	15000000	Diambil Pakuwu	Belum Lunas			6/5/2026 19:06:39
+HT-34B378B6	2026-04-30	39	KUWU	25000000	Diambil Pa Kuwu	Belum Lunas			6/5/2026 19:07:57
+HT-098D2396	2026-04-30	46	IMAM	8550000	Hutang Imam	Belum Lunas			6/5/2026 19:09:18
+HT-C3E8A360	2026-04-29	46	ARDI	9450000	Hutang Ardi	Belum Lunas			6/5/2026 19:09:48
+HT-362DB932	2026-04-30	47	IMAM	2200000	Hutang Imam	Belum Lunas			6/5/2026 19:11:50
+HT-8435D071	2026-05-04	47	ILHAM	1000000	Hutang Ilham	Belum Lunas			6/5/2026 19:12:32
+HT-6C601262	2026-04-30	49	KUWU	20000000	Diambil Pakuwu	Belum Lunas			6/5/2026 19:16:29
+HT-C4639758	2026-04-30	50	KUWU	5000000	Diambil Pa Kuwu	Belum Lunas			6/5/2026 19:17:00
+HT-AC94ED03	2026-05-06	68	KAMINAH	1000000	Kaminah Pas Bagi Honor RT	Belum Lunas			6/5/2026 19:27:01
+HT-51FC4B9B	2026-02-10	72	ARDI	2000000	Hutang Ardi	Belum Lunas			6/5/2026 19:37:44
+HT-D78B7DEB	2026-02-13	72	IBU KUWU	2000000	Hutang Ibu Kuwu	Belum Lunas			6/5/2026 19:39:48
+HT-C0B5569D	2026-02-27	72	IMAM	1200000	Hutang Imam	Belum Lunas			6/5/2026 19:41:47
+HT-29397920	2026-03-31	72	CEPAK	500000	Upah Tukang Nyi Tosa	Belum Lunas			6/5/2026 19:45:15
+HT-E2FFBCA7	2026-03-31	72	IMAM	1000000	Hutang Imam	Belum Lunas			6/5/2026 19:45:51
+HT-039FE7B1	2026-03-02	72	CEPAK	1000000	UPAH TUKANG NYI TOSA	Belum Lunas			6/5/2026 19:47:29
+
+=== TRANSAKSI ===
+id	tanggal	tipe	id_anggaran	jumlah	keterangan	ref_id	bukti	timestamp
+TX-C55F449D	2026-01-15	Pemasukan	4	52200000	Penghasilan Tetap Perangkat Desa 4 orang x 2.175.000 x 6 bulan			6/5/2026 17:07:32
+TX-1575A1B0	2026-01-15	Pemasukan	5	34800000	Pengganti Hak Garap Bengkok 3 B			6/5/2026 17:08:19
+TX-FA79C034	2026-01-15	Pemasukan	11	2000000	Honor kemit Bulan Januari			6/5/2026 17:09:01
+TX-E922DD2E	2026-01-15	Pemasukan	10	19000000	Honor Juru Kunci Makam			6/5/2026 17:09:28
+TX-94D26C2B	2026-01-15	Pemasukan	27	36900000	Tunjangan BPD PAD			6/5/2026 17:10:07
+TX-CA9698BF	2026-01-15	Pemasukan	22	26900000	Insentif RT/RW			6/5/2026 17:10:48
+TX-CFCD2D68	2026-01-17	Pengeluaran	11	2000000	Honor Kemit Bulan Januari			6/5/2026 17:11:43
+TX-2FBAE912	2026-01-17	Pengeluaran	10	19000000	Honor Juru Kunci Makam Desa			6/5/2026 17:13:09
+TX-51A688CC	2026-01-17	Pengeluaran	27	36900000	Tunjangan Keudukan BP PAD			6/5/2026 17:13:51
+TX-4557FEFA	2026-01-17	Pengeluaran	22	26900000	Insentif RT/RW			6/5/2026 17:14:28
+TX-C41D6589	2026-01-17	Pengeluaran	4	225000	Honor Pengambilan Uang PAD Tahap I Tangguh, Mamuri			6/5/2026 17:16:14
+TX-E1B74202	2026-01-17	Pengeluaran	4	1500000	Pemberian Pinjaman Hutang ke Pribadi: Keperluan Mendadak	HT-15C54FC4		6/5/2026 17:17:48
+TX-32CC23DB	2026-01-17	Pengeluaran	4	1000000	Pemberian Pinjaman Hutang ke Pribadi: Keperluan Mendadak	HT-6B4B4596		6/5/2026 17:19:10
+TX-7FAD32B4	2026-01-17	Pemasukan	60	2000000	Penerimaan Talangan dari Anggaran ID 4: Rehab Mushola Tahsinul Ahlaq	TL-C97CE0AD		6/5/2026 17:20:22
+TX-516312F5	2026-01-17	Pengeluaran	60	2000000	Penggunaan Dana Talangan dari Anggaran ID 4: Rehab Mushola Tahsinul Ahlaq	TL-C97CE0AD		6/5/2026 17:20:23
+TX-E8D2ED8F	2026-01-17	Pengeluaran	4	2000000	Pemberian Talangan ke Anggaran ID 60: Rehab Mushola Tahsinul Ahlaq	TL-C97CE0AD		6/5/2026 17:20:23
+TX-D2C40E41	2025-01-17	Pengeluaran	5	34800000	Pengganti Hak Garap Bengkok 3B			6/5/2026 17:24:00
+TX-A8B207F1	2026-01-14	Pengeluaran	4	45000000	Pemberian Pinjaman Hutang ke Pribadi: -	HT-C62B693D		6/5/2026 17:24:45
+TX-A2CFB8B7	2026-01-17	Pengeluaran	4	475000	Pemberian Pinjaman Hutang ke Pribadi: Upah TUKANG Nyi Tosa	HT-A35E4CBF		6/5/2026 17:26:42
+TX-04AB0E6E	2026-01-17	Pengeluaran	4	1000000	Pemberian Pinjaman Hutang ke Pribadi: Darurat	HT-9E5F126E		6/5/2026 17:27:10
+TX-F481CE92	2026-02-04	Pemasukan	72	21450000	PENERIMAAN DARI PTSL			6/5/2026 17:35:46
+TX-6DEE22DD	2026-03-26	Pemasukan	13	14867280	LANGGANAN LISTRIK			6/5/2026 17:46:55
+TX-2C804719	2026-03-26	Pemasukan	19	18600000	Tunjangan BPD Tahap I			6/5/2026 17:47:36
+TX-08269AA6	2026-03-14	Pemasukan	12	32000000	SETOR HASIL SEWA KIOS DARI H.UDIN			6/5/2026 17:48:16
+TX-105176DD	2026-04-28	Pemasukan	71	3600000	DANA BLT DD Triwulan I			6/5/2026 17:49:05
+TX-5EA3E0E9	2026-04-28	Pemasukan	49	20000000	Sewa Wayang Mapagsri			6/5/2026 17:49:38
+TX-5D2817ED	2026-04-28	Pemasukan	50	5000000	Konsumsi Wayang			6/5/2026 17:50:07
+TX-5E5AD366	2026-04-28	Pemasukan	48	3600000	Babinsa dan Babin Kamtibmas			6/5/2026 17:50:37
+TX-D324B9FB	2026-04-28	Pemasukan	31	37920000	Puskesos Honor RT			6/5/2026 17:51:11
+TX-86551ED7	2026-04-28	Pemasukan	34	15000000	Pengembangan Sistem Informasi Desa			6/5/2026 17:51:43
+TX-56A2D9BE	2026-04-28	Pemasukan	61	1500000	Insentif Guru Ngaji (PBK)			6/5/2026 17:52:16
+TX-A2EC51D4	2026-04-28	Pemasukan	38	14400000	Honor Guru TK 			6/5/2026 17:52:40
+TX-3511AC95	2026-04-28	Pemasukan	39	81960000	Posyandu			6/5/2026 17:53:44
+TX-95177118	2026-04-28	Pemasukan	46	18000000	Honor Petugas TPS			6/5/2026 17:54:18
+TX-E9D8474C	2026-04-28	Pemasukan	47	8393600	Sarpras TPS			6/5/2026 17:54:57
+TX-39A786CA	2026-04-28	Pemasukan	59	4000000	Masjid Nurul Huda			6/5/2026 17:55:55
+TX-B0DCAD7C	2026-04-28	Pemasukan	60	2000000	Mushola Tahsinul Ahlaq			6/5/2026 17:56:23
+TX-EEDB8A07	2026-04-28	Pemasukan	23	11200000	OP Pemdes Bersumber DDS			6/5/2026 17:57:02
+TX-0B1F822C	2026-05-05	Pemasukan	28	170917	Sarpras PAD			6/5/2026 17:59:10
+TX-9B3E7A62	2026-05-05	Pemasukan	11	2000000	Honor Kemit 			6/5/2026 18:00:01
+TX-B011FB1C	2026-06-02	Pemasukan	12	2000000	SETOR H UDIN SEWA PASAR			6/5/2026 18:00:43
+TX-EA401171	2026-06-05	Pemasukan	12	1000000	SETOR H UDIN SEWA PASAR			6/5/2026 18:01:51
+TX-951EB0E0	2026-03-26	Pengeluaran	13	1850000	Langganan Listrik dan Internet Bulan Januari			6/5/2026 18:04:41
+TX-1975B7C2	2026-03-26	Pengeluaran	13	1650000	Langganan Listrik dan Internet Bulan Februari			6/5/2026 18:05:18
+TX-F37BEC5F	2026-03-26	Pengeluaran	13	1700000	Langganan Listrik dan Internet Bulan Maret			6/5/2026 18:05:59
+TX-AC3D40CF	2026-03-26	Pemasukan	7	430000	Penerimaan Talangan dari Anggaran ID 13: ATK ( Persiapan Zakat Fitrah Plastik Waring DLL 230.000 dan Upah Pengambilan ADD 200.000)	TL-6A32993C		6/5/2026 18:08:25
+TX-7A72871A	2026-03-26	Pengeluaran	7	430000	Penggunaan Dana Talangan dari Anggaran ID 13: ATK (  Persiapan Zakat Fitrah Plastik Waring DLL 230.000 dan Upah Pengambilan ADD 200.000l)	TL-6A32993C		6/5/2026 18:08:26
+TX-73928985	2026-03-26	Pengeluaran	13	430000	Pemberian Talangan ke Anggaran ID 7: ATK (  Persiapan Zakat Fitrah Plastik Waring DLL 230.000 dan Upah Pengambilan ADD 200.000)	TL-6A32993C		6/5/2026 18:08:26
+TX-2F54156E	2026-03-28	Pemasukan	7	1500000	Penerimaan Talangan dari Anggaran ID 13: ATK (Baja Pupr  500.000 dan Urunan Pisah Sambut Camat 1.000.000)	TL-3EAEAC12		6/5/2026 18:09:30
+TX-72A3C810	2026-03-28	Pengeluaran	7	1500000	Penggunaan Dana Talangan dari Anggaran ID 13: ATK  (Baja Pupr  500.000 dan Urunan Pisah Sambut Camat 1.000.000)	TL-3EAEAC12		6/5/2026 18:09:31
+TX-74B1FCCB	2026-03-28	Pengeluaran	13	1500000	Pemberian Talangan ke Anggaran ID 7: ATK  (Baja Pupr  500.000 dan Urunan Pisah Sambut Camat 1.000.000)	TL-3EAEAC12		6/5/2026 18:09:31
+TX-2717766E	2026-01-04	Pemasukan	47	700000	Penerimaan Talangan dari Anggaran ID 13: Solar Beco (Saep)	TL-DF000F9A		6/5/2026 18:12:15
+TX-838162FD	2026-01-04	Pengeluaran	47	700000	Penggunaan Dana Talangan dari Anggaran ID 13: Solar Beco (Saep)	TL-DF000F9A		6/5/2026 18:12:16
+TX-6BC56FA9	2026-01-04	Pengeluaran	13	700000	Pemberian Talangan ke Anggaran ID 47: Solar Beco (Saep)	TL-DF000F9A		6/5/2026 18:12:17
+TX-4DFF2652	2026-04-01	Pemasukan	45	1300000	Penerimaan Talangan dari Anggaran ID 13: Pengurugan Pasar Desa 	TL-68121E8E		6/5/2026 18:14:02
+TX-5BA98CD7	2026-04-01	Pengeluaran	45	1300000	Penggunaan Dana Talangan dari Anggaran ID 13: Pengurugan Pasar Desa 	TL-68121E8E		6/5/2026 18:14:03
+TX-10AB14D6	2026-04-01	Pengeluaran	13	1300000	Pemberian Talangan ke Anggaran ID 45: Pengurugan Pasar Desa 	TL-68121E8E		6/5/2026 18:14:03
+TX-D072C9E5	2026-04-01	Pemasukan	9	300000	Penerimaan Talangan dari Anggaran ID 13: Pengharum Ruangan 	TL-A8F269A9		6/5/2026 18:16:10
+TX-BE7CCC30	2026-04-01	Pengeluaran	9	300000	Penggunaan Dana Talangan dari Anggaran ID 13: Pengharum Ruangan 	TL-A8F269A9		6/5/2026 18:16:10
+TX-7C8FF8CA	2026-04-01	Pengeluaran	13	300000	Pemberian Talangan ke Anggaran ID 9: Pengharum Ruangan 	TL-A8F269A9		6/5/2026 18:16:11
+TX-67C8B05E	2026-04-01	Pengeluaran	13	3500000	Pemberian Pinjaman Hutang ke Pribadi: Dana Mendesak	HT-125486EF		6/5/2026 18:18:07
+TX-C40EF137	2026-04-07	Pemasukan	8	220000	Penerimaan Talangan dari Anggaran ID 13: Bayar Hutang Listrik Ke Dulloh a/n Topik	TL-2AAD6724		6/5/2026 18:18:47
+TX-2262232C	2026-04-07	Pengeluaran	8	220000	Penggunaan Dana Talangan dari Anggaran ID 13: Bayar Hutang Listrik Ke Dulloh a/n Topik	TL-2AAD6724		6/5/2026 18:18:48
+TX-B48CD64F	2026-04-07	Pengeluaran	13	220000	Pemberian Talangan ke Anggaran ID 8: Bayar Hutang Listrik Ke Dulloh a/n Topik	TL-2AAD6724		6/5/2026 18:18:48
+TX-70D30DF5	2026-04-20	Pemasukan	13	1800000	Penerimaan Talangan dari Anggaran ID 12: Langganan Listrik dan Internet Bulan April	TL-18559094		6/5/2026 18:21:27
+TX-02732A37	2026-04-20	Pengeluaran	13	1800000	Penggunaan Dana Talangan dari Anggaran ID 12: Langganan Listrik dan Internet Bulan April	TL-18559094		6/5/2026 18:21:28
+TX-3F7F0546	2026-04-20	Pengeluaran	12	1800000	Pemberian Talangan ke Anggaran ID 13: Langganan Listrik dan Internet Bulan April	TL-18559094		6/5/2026 18:21:28
+TX-972D2AEF	2026-04-20	Pemasukan	7	250000	Penerimaan Talangan dari Anggaran ID 13: Aldo Beberes Pasar	TL-C3478E85		6/5/2026 18:28:21
+TX-BF0089A1	2026-04-20	Pengeluaran	7	250000	Penggunaan Dana Talangan dari Anggaran ID 13: Aldo Beberes Pasar	TL-C3478E85		6/5/2026 18:28:22
+TX-16CAB5AD	2026-04-20	Pengeluaran	13	250000	Pemberian Talangan ke Anggaran ID 7: Aldo Beberes Pasar	TL-C3478E85		6/5/2026 18:28:23
+TX-76947E77	2026-05-13	Pemasukan	73	880000	Penerimaan Talangan dari Anggaran ID 13: Konsumsi Hari Terakhir Inspektorat	TL-9F005F42		6/5/2026 18:34:12
+TX-94FA835B	2026-05-13	Pengeluaran	73	880000	Penggunaan Dana Talangan dari Anggaran ID 13: Konsumsi Hari Terakhir Inspektorat	TL-9F005F42		6/5/2026 18:34:13
+TX-EC369C82	2026-05-13	Pengeluaran	13	880000	Pemberian Talangan ke Anggaran ID 73: Konsumsi Hari Terakhir Inspektorat	TL-9F005F42		6/5/2026 18:34:13
+TX-13598D7C	2026-06-03	Pemasukan	13	1500000	Penerimaan Talangan dari Anggaran ID 61: Listrik dan Internet Mei dan Juni	TL-BEC4C8E9		6/5/2026 18:39:33
+TX-226D35E8	2026-06-03	Pengeluaran	13	1500000	Penggunaan Dana Talangan dari Anggaran ID 61: Listrik dan Internet Mei dan Juni	TL-BEC4C8E9		6/5/2026 18:39:33
+TX-1B5E0DF4	2026-06-03	Pengeluaran	61	1500000	Pemberian Talangan ke Anggaran ID 13: Listrik dan Internet Mei dan Juni	TL-BEC4C8E9		6/5/2026 18:39:33
+TX-7D603DF9	2026-06-03	Pemasukan	13	350000	Penerimaan Talangan dari Anggaran ID 23: Kekurangan Bayar Listrik dan Internet Bulan Mei dan Juni	TL-9018F4DC		6/5/2026 18:40:22
+TX-9D988746	2026-06-03	Pengeluaran	13	350000	Penggunaan Dana Talangan dari Anggaran ID 23: Kekurangan Bayar Listrik dan Internet Bulan Mei dan Juni	TL-9018F4DC		6/5/2026 18:40:24
+TX-1BC09C41	2026-06-03	Pengeluaran	23	350000	Pemberian Talangan ke Anggaran ID 13: Kekurangan Bayar Listrik dan Internet Bulan Mei dan Juni	TL-9018F4DC		6/5/2026 18:40:24
+TX-E01CCD95	2026-04-25	Pemasukan	17	500000	Penerimaan Talangan dari Anggaran ID 13: "Rincian \nGanti busi 100 rb\nGanti kabel lan baut2 150 \nRb\nOngkos servis 200 rb \nUdud lan kopi 50 rb\nTotal 500 rb"	TL-56DDADBC		6/5/2026 18:41:26
+TX-A552B71A	2026-04-25	Pengeluaran	17	500000	Penggunaan Dana Talangan dari Anggaran ID 13: "Rincian \nGanti busi 100 rb\nGanti kabel lan baut2 150 \nRb\nOngkos servis 200 rb \nUdud lan kopi 50 rb\nTotal 500 rb"	TL-56DDADBC		6/5/2026 18:41:26
+TX-FF2F40F3	2026-04-25	Pengeluaran	13	500000	Pemberian Talangan ke Anggaran ID 17: "Rincian \nGanti busi 100 rb\nGanti kabel lan baut2 150 \nRb\nOngkos servis 200 rb \nUdud lan kopi 50 rb\nTotal 500 rb"	TL-56DDADBC		6/5/2026 18:41:26
+TX-6D6E3ADD	2026-03-16	Pemasukan	11	2000000	Penerimaan Talangan dari Anggaran ID 12: Honor Kemit Bulan Februari	TL-03C0A920		6/5/2026 18:44:05
+TX-EC539141	2026-03-16	Pengeluaran	11	2000000	Penggunaan Dana Talangan dari Anggaran ID 12: Honor Kemit Bulan Februari	TL-03C0A920		6/5/2026 18:44:05
+TX-6DF6EFE8	2026-03-16	Pengeluaran	12	2000000	Pemberian Talangan ke Anggaran ID 11: Honor Kemit Bulan Februari	TL-03C0A920		6/5/2026 18:44:06
+TX-BD9BC0A4	2026-03-17	Pengeluaran	12	1000000	Pemberian Pinjaman Hutang ke Pribadi: Darurat	HT-CC7D62D9		6/5/2026 18:45:38
+TX-DC595037	2026-03-17	Pengeluaran	12	4000000	Pemberian Pinjaman Hutang ke Pribadi: Darurat	HT-D2F7697F		6/5/2026 18:46:09
+TX-A6A49CDF	2026-03-17	Pengeluaran	12	3000000	Pemberian Pinjaman Hutang ke Pribadi: DARURAT	HT-BA4AA2BD		6/5/2026 18:46:39
+TX-4838CF7B	2026-03-17	Pemasukan	67	3700000	Penerimaan Talangan dari Anggaran ID 12: Talangan MUI	TL-B84C966F		6/5/2026 18:47:11
+TX-5503E31E	2026-03-17	Pengeluaran	67	3700000	Penggunaan Dana Talangan dari Anggaran ID 12: Talangan MUI	TL-B84C966F		6/5/2026 18:47:11
+TX-00284ECE	2026-03-17	Pengeluaran	12	3700000	Pemberian Talangan ke Anggaran ID 67: Talangan MUI	TL-B84C966F		6/5/2026 18:47:11
+TX-790420B2	2025-04-15	Pemasukan	11	4000000	Penerimaan Talangan dari Anggaran ID 12: Honor Kemit Maret dan April	TL-DAFDB763		6/5/2026 18:48:12
+TX-0C48E5F1	2025-04-15	Pengeluaran	11	4000000	Penggunaan Dana Talangan dari Anggaran ID 12: Honor Kemit Maret dan April	TL-DAFDB763		6/5/2026 18:48:12
+TX-95F895BC	2025-04-15	Pengeluaran	12	4000000	Pemberian Talangan ke Anggaran ID 11: Honor Kemit Maret dan April	TL-DAFDB763		6/5/2026 18:48:13
+TX-70533329	2026-04-24	Pengeluaran	12	1000000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Kuwu	HT-B63E0F66		6/5/2026 18:48:40
+TX-B9AA52FA	2026-06-24	Pengeluaran	12	3000000	Pemberian Pinjaman Hutang ke Pribadi: Sekolah	HT-144D89C7		6/5/2026 18:49:08
+TX-85B547DF	2026-04-26	Pengeluaran	12	2000000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Ardi	HT-63DB20B6		6/5/2026 18:49:43
+TX-33D45CC6	2024-06-05	Pengeluaran	12	1000000	Pemberian Pinjaman Hutang ke Pribadi: Boca Sekolah	HT-EFC16D10		6/5/2026 18:50:09
+TX-DBE2F230	2026-02-17	Pemasukan	65	6500000	Penerimaan Talangan dari Anggaran ID 12: Talangi LPM	TL-66914D27		6/5/2026 18:51:43
+TX-D0B56119	2026-02-17	Pengeluaran	65	6500000	Penggunaan Dana Talangan dari Anggaran ID 12: Talangi LPM	TL-66914D27		6/5/2026 18:51:44
+TX-BB1C6584	2026-02-17	Pengeluaran	12	6500000	Pemberian Talangan ke Anggaran ID 65: Talangi LPM	TL-66914D27		6/5/2026 18:51:45
+TX-B32E28C9	2026-03-26	Pengeluaran	19	18600000	Tunjangan BPD ADD Tahap I			6/5/2026 18:55:24
+TX-891F107C	2026-04-28	Pengeluaran	23	5200000	Pemberian Pinjaman Hutang ke Pribadi: Uang 10.000.000 diambil Ardi\nyang 4.800 talangan Sampah	HT-760C4370		6/5/2026 18:57:18
+TX-0818893A	2026-04-30	Pengeluaran	23	2500000	Ibu Muksinah Ibu Kalimah Ibu Amnah Bapak Rois Bapak Ino Suparno Ibu Amanah Bapak Kusnadi			6/5/2026 18:58:46
+TX-6045CDB8	2026-05-04	Pengeluaran	23	1500000	Dana Kematian 5 Orang (Imam Syauqi)			6/5/2026 19:00:22
+TX-277489AF	2026-05-10	Pemasukan	9	300000	Penerimaan Talangan dari Anggaran ID 23: Pengharum Ruangan	TL-F21806D3		6/5/2026 19:01:00
+TX-120A1DED	2026-05-10	Pengeluaran	9	300000	Penggunaan Dana Talangan dari Anggaran ID 23: Pengharum Ruangan	TL-F21806D3		6/5/2026 19:01:00
+TX-4E18D05B	2026-05-10	Pengeluaran	23	300000	Pemberian Talangan ke Anggaran ID 9: Pengharum Ruangan	TL-F21806D3		6/5/2026 19:01:01
+TX-44C1F837	2026-05-25	Pemasukan	73	1000000	Penerimaan Talangan dari Anggaran ID 23: Samidi ( Bon Honor Pemungut Sampah)	TL-5C446451		6/5/2026 19:02:25
+TX-574FD139	2026-05-25	Pengeluaran	73	1000000	Penggunaan Dana Talangan dari Anggaran ID 23: Samidi ( Bon Honor Pemungut Sampah)	TL-5C446451		6/5/2026 19:02:25
+TX-DE1481F5	2026-05-25	Pengeluaran	23	1000000	Pemberian Talangan ke Anggaran ID 73: Samidi ( Bon Honor Pemungut Sampah)	TL-5C446451		6/5/2026 19:02:26
+TX-B8363C6F	2026-05-25	Pemasukan	7	170817	Penerimaan Talangan dari Anggaran ID 28: ATK dll	TL-EF98282B		6/5/2026 19:04:54
+TX-A2A86FE7	2026-05-25	Pengeluaran	7	170817	Penggunaan Dana Talangan dari Anggaran ID 28: ATK dll	TL-EF98282B		6/5/2026 19:04:54
+TX-EE9F6D9E	2026-05-25	Pengeluaran	28	170817	Pemberian Talangan ke Anggaran ID 7: ATK dll	TL-EF98282B		6/5/2026 19:04:55
+TX-8E2B87BA	2026-05-06	Pengeluaran	31	37920000	Honor RT/RW Dana Desa			6/5/2026 19:05:54
+TX-897CCCF9	2026-04-30	Pengeluaran	34	15000000	Pemberian Pinjaman Hutang ke Pribadi: Diambil Pakuwu	HT-57581EB0		6/5/2026 19:06:41
+TX-5A900D48	2026-04-28	Pengeluaran	38	14400000	Honor TK Al-Ikhwan ( Hana)			6/5/2026 19:07:17
+TX-7CA37A3C	2026-04-30	Pengeluaran	39	25000000	Pemberian Pinjaman Hutang ke Pribadi: Diambil Pa Kuwu	HT-34B378B6		6/5/2026 19:07:57
+TX-7391ABCB	2026-05-06	Pengeluaran	39	56960000	Poyandu ( Ibu Kuwu)			6/5/2026 19:08:28
+TX-BE028D01	2026-04-30	Pengeluaran	46	8550000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Imam	HT-098D2396		6/5/2026 19:09:19
+TX-59688C90	2026-04-29	Pengeluaran	46	9450000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Ardi	HT-C3E8A360		6/5/2026 19:09:49
+TX-0FB838DA	2026-04-28	Pengeluaran	47	4800000	Mob Demob : 1.500.000 Solar 150 L : 1.350.000 Swa Beco : 1.050.000 Operator : 600.000 Ivan : 300.000 uang diambil Pa kuwu			6/5/2026 19:11:01
+TX-771B0233	2026-04-30	Pengeluaran	47	2200000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Imam	HT-362DB932		6/5/2026 19:11:51
+TX-4CBDA64D	2026-05-04	Pengeluaran	47	1000000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Ilham	HT-8435D071		6/5/2026 19:12:32
+TX-3D1AC1F5	2026-05-02	Pemasukan	18	250000	Penerimaan Talangan dari Anggaran ID 47: Kopi Pengurasan : 50.000 Cuci Ac 2 Bh : 200.000	TL-C6944008		6/5/2026 19:13:56
+TX-072F10A0	2026-05-02	Pengeluaran	18	250000	Penggunaan Dana Talangan dari Anggaran ID 47: Kopi Pengurasan : 50.000 Cuci Ac 2 Bh : 200.000	TL-C6944008		6/5/2026 19:13:57
+TX-F50FCDF4	2026-05-02	Pengeluaran	47	250000	Pemberian Talangan ke Anggaran ID 18: Kopi Pengurasan : 50.000 Cuci Ac 2 Bh : 200.000	TL-C6944008		6/5/2026 19:13:57
+TX-CA1AD858	2026-05-25	Pemasukan	7	100000	Penerimaan Talangan dari Anggaran ID 47: Konsumsi Bagi Honor RT/RW	TL-F1F034D8		6/5/2026 19:14:44
+TX-BF14AD29	2026-05-25	Pengeluaran	7	100000	Penggunaan Dana Talangan dari Anggaran ID 47: Konsumsi Bagi Honor RT/RW	TL-F1F034D8		6/5/2026 19:14:44
+TX-C62603B3	2026-05-25	Pengeluaran	47	100000	Pemberian Talangan ke Anggaran ID 7: Konsumsi Bagi Honor RT/RW	TL-F1F034D8		6/5/2026 19:14:45
+TX-1967C3E6	2026-05-06	Pengeluaran	48	3600000	Honor Babinsa dan Babinkamtibmas			6/5/2026 19:15:51
+TX-BC8FC5AF	2026-04-30	Pengeluaran	49	20000000	Pemberian Pinjaman Hutang ke Pribadi: Diambil Pakuwu	HT-6C601262		6/5/2026 19:16:30
+TX-E18005D3	2026-04-30	Pengeluaran	50	5000000	Pemberian Pinjaman Hutang ke Pribadi: Diambil Pa Kuwu	HT-C4639758		6/5/2026 19:17:00
+TX-A8610F2F	2026-05-04	Pengeluaran	59	4000000	rehab masjid nurul huda imam			6/5/2026 19:18:36
+TX-2595F73E	2026-03-15	Pemasukan	73	1700000	Penerimaan Talangan dari Anggaran ID 60: Konsumsi Hari Pertama Inspektorat	TL-C1770E91		6/5/2026 19:20:07
+TX-86C65409	2026-03-15	Pengeluaran	73	1700000	Penggunaan Dana Talangan dari Anggaran ID 60: Konsumsi Hari Pertama Inspektorat	TL-C1770E91		6/5/2026 19:20:08
+TX-44F0A1A1	2026-03-15	Pengeluaran	60	1700000	Pemberian Talangan ke Anggaran ID 73: Konsumsi Hari Pertama Inspektorat	TL-C1770E91		6/5/2026 19:20:09
+TX-A8B1B907	2026-04-28	Pemasukan	68	5000000	Obat-obatan Pertanian			6/5/2026 19:25:12
+TX-B692C974	2026-05-04	Pengeluaran	68	500000	Obat Suket Wanaiman (Kemit)			6/5/2026 19:25:51
+TX-AD80B1B4	2026-05-06	Pemasukan	9	300000	Penerimaan Talangan dari Anggaran ID 68: Pengharum Ruangan	TL-4E7FDC84		6/5/2026 19:26:27
+TX-4DB5E963	2026-05-06	Pengeluaran	9	300000	Penggunaan Dana Talangan dari Anggaran ID 68: Pengharum Ruangan	TL-4E7FDC84		6/5/2026 19:26:28
+TX-05D38F03	2026-05-06	Pengeluaran	68	300000	Pemberian Talangan ke Anggaran ID 9: Pengharum Ruangan	TL-4E7FDC84		6/5/2026 19:26:28
+TX-B4C264C8	2026-05-06	Pengeluaran	68	1000000	Pemberian Pinjaman Hutang ke Pribadi: Kaminah Pas Bagi Honor RT	HT-AC94ED03		6/5/2026 19:27:02
+TX-EE86DB18	2026-05-06	Pemasukan	7	700000	Penerimaan Talangan dari Anggaran ID 68: Honor Pengambilan Uang 2 x (Ardi, mamuri, Tangguh)	TL-E38CD5FE		6/5/2026 19:27:56
+TX-FE7235E4	2026-05-06	Pengeluaran	7	700000	Penggunaan Dana Talangan dari Anggaran ID 68: Honor Pengambilan Uang 2 x (Ardi, mamuri, Tangguh)	TL-E38CD5FE		6/5/2026 19:27:56
+TX-5191A311	2026-05-06	Pengeluaran	68	700000	Pemberian Talangan ke Anggaran ID 7: Honor Pengambilan Uang 2 x (Ardi, mamuri, Tangguh)	TL-E38CD5FE		6/5/2026 19:27:56
+TX-6D424A4C	2026-05-13	Pemasukan	73	2400000	Penerimaan Talangan dari Anggaran ID 68: Inspektorat 	TL-6827CA03		6/5/2026 19:28:55
+TX-4ACED1D3	2026-05-13	Pengeluaran	73	2400000	Penggunaan Dana Talangan dari Anggaran ID 68: Inspektorat 	TL-6827CA03		6/5/2026 19:28:56
+TX-4BC1E852	2026-05-13	Pengeluaran	68	2400000	Pemberian Talangan ke Anggaran ID 73: Inspektorat 	TL-6827CA03		6/5/2026 19:28:56
+TX-576983A0	2026-05-13	Pemasukan	73	3600000	Penerimaan Talangan dari Anggaran ID 71: Inspektorat	TL-5FED62E3		6/5/2026 19:30:48
+TX-83C209E7	2026-05-13	Pengeluaran	73	3600000	Penggunaan Dana Talangan dari Anggaran ID 71: Inspektorat	TL-5FED62E3		6/5/2026 19:30:48
+TX-A71E41FF	2026-05-13	Pengeluaran	71	3600000	Pemberian Talangan ke Anggaran ID 73: Inspektorat	TL-5FED62E3		6/5/2026 19:30:49
+TX-8ED96474	2026-02-04	Pemasukan	7	400000	Penerimaan Talangan dari Anggaran ID 72: Penebangan Pohon Wanaiman	TL-52043511		6/5/2026 19:33:06
+TX-B22D22A9	2026-02-04	Pengeluaran	7	400000	Penggunaan Dana Talangan dari Anggaran ID 72: Penebangan Pohon Wanaiman	TL-52043511		6/5/2026 19:33:06
+TX-EF59C6A1	2026-02-04	Pengeluaran	72	400000	Pemberian Talangan ke Anggaran ID 7: Penebangan Pohon Wanaiman	TL-52043511		6/5/2026 19:33:06
+TX-AF449DF7	2026-03-14	Pemasukan	7	800000	Penerimaan Talangan dari Anggaran ID 72: Pupuk Lapangan Madsinah : 100.000 Stempel Mitra Cai : 100.000 Amplop Survei Mitra Cai : 400.000 Referensi Bank : 100.000 Saep ke Dinas Pertanina : 100.000	TL-A29CE3E5		6/5/2026 19:34:27
+TX-025A35DE	2026-03-14	Pengeluaran	7	800000	Penggunaan Dana Talangan dari Anggaran ID 72: Pupuk Lapangan Madsinah : 100.000 Stempel Mitra Cai : 100.000 Amplop Survei Mitra Cai : 400.000 Referensi Bank : 100.000 Saep ke Dinas Pertanina : 100.000	TL-A29CE3E5		6/5/2026 19:34:28
+TX-1F94F914	2026-03-14	Pengeluaran	72	800000	Pemberian Talangan ke Anggaran ID 7: Pupuk Lapangan Madsinah : 100.000 Stempel Mitra Cai : 100.000 Amplop Survei Mitra Cai : 400.000 Referensi Bank : 100.000 Saep ke Dinas Pertanina : 100.000	TL-A29CE3E5		6/5/2026 19:34:28
+TX-6B1237F8	2026-02-10	Pemasukan	55	300000	Penerimaan Talangan dari Anggaran ID 72: Imtihan 	TL-A8BD7D20		6/5/2026 19:37:03
+TX-D02CA27A	2026-02-10	Pengeluaran	55	300000	Penggunaan Dana Talangan dari Anggaran ID 72: Imtihan 	TL-A8BD7D20		6/5/2026 19:37:03
+TX-18EB79D9	2026-02-10	Pengeluaran	72	300000	Pemberian Talangan ke Anggaran ID 55: Imtihan 	TL-A8BD7D20		6/5/2026 19:37:04
+TX-F2F8D1C8	2026-02-10	Pengeluaran	72	2000000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Ardi	HT-51FC4B9B		6/5/2026 19:37:45
+TX-5D0F7F2E	2026-02-11	Pemasukan	18	800000	Penerimaan Talangan dari Anggaran ID 72: Service Ac Ruanngan Pa Kuwu	TL-C903D6B4		6/5/2026 19:38:30
+TX-8DFF6222	2026-02-11	Pengeluaran	18	800000	Penggunaan Dana Talangan dari Anggaran ID 72: Service Ac Ruanngan Pa Kuwu	TL-C903D6B4		6/5/2026 19:38:30
+TX-6EE580A6	2026-02-11	Pengeluaran	72	800000	Pemberian Talangan ke Anggaran ID 18: Service Ac Ruanngan Pa Kuwu	TL-C903D6B4		6/5/2026 19:38:31
+TX-5C18F290	2026-02-12	Pemasukan	8	300000	Penerimaan Talangan dari Anggaran ID 72: Tagihan Alat Listrik Pasar Desa Opik	TL-DA7D69DF		6/5/2026 19:39:15
+TX-6F34FB57	2026-02-12	Pengeluaran	8	300000	Penggunaan Dana Talangan dari Anggaran ID 72: Tagihan Alat Listrik Pasar Desa Opik	TL-DA7D69DF		6/5/2026 19:39:15
+TX-E94401C9	2026-02-12	Pengeluaran	72	300000	Pemberian Talangan ke Anggaran ID 8: Tagihan Alat Listrik Pasar Desa Opik	TL-DA7D69DF		6/5/2026 19:39:16
+TX-FA8A01DB	2026-02-13	Pengeluaran	72	2000000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Ibu Kuwu	HT-D78B7DEB		6/5/2026 19:39:49
+TX-FF641A91	2026-02-19	Pemasukan	62	350000	Penerimaan Talangan dari Anggaran ID 72: Tarling Mushola As-Shidiqiyah	TL-4495C986		6/5/2026 19:41:12
+TX-D32D7FE3	2026-02-19	Pengeluaran	62	350000	Penggunaan Dana Talangan dari Anggaran ID 72: Tarling Mushola As-Shidiqiyah	TL-4495C986		6/5/2026 19:41:13
+TX-CB936369	2026-02-19	Pengeluaran	72	350000	Pemberian Talangan ke Anggaran ID 62: Tarling Mushola As-Shidiqiyah	TL-4495C986		6/5/2026 19:41:14
+TX-1B98AABF	2026-02-27	Pengeluaran	72	1200000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Imam	HT-C0B5569D		6/5/2026 19:41:48
+TX-486271A4	2026-03-31	Pengeluaran	72	500000	Pemberian Pinjaman Hutang ke Pribadi: Upah Tukang Nyi Tosa	HT-29397920		6/5/2026 19:45:15
+TX-A33AC6E9	2026-03-31	Pengeluaran	72	1000000	Pemberian Pinjaman Hutang ke Pribadi: Hutang Imam	HT-E2FFBCA7		6/5/2026 19:45:51
+TX-6A4D9CC0	2026-03-10	Pemasukan	52	10000000	Penerimaan Talangan dari Anggaran ID 72: THR KE IBU KUWU	TL-200F62E9		6/5/2026 19:46:43
+TX-0F4C7983	2026-03-10	Pengeluaran	52	10000000	Penggunaan Dana Talangan dari Anggaran ID 72: THR KE IBU KUWU	TL-200F62E9		6/5/2026 19:46:44
+TX-0782F902	2026-03-10	Pengeluaran	72	10000000	Pemberian Talangan ke Anggaran ID 52: THR KE IBU KUWU	TL-200F62E9		6/5/2026 19:46:44
+TX-34A8CCCF	2026-03-02	Pengeluaran	72	1000000	Pemberian Pinjaman Hutang ke Pribadi: UPAH TUKANG NYI TOSA	HT-039FE7B1		6/5/2026 19:47:29
+TX-A4930CC3	2026-02-14	Pemasukan	7	500000	Penerimaan Talangan dari Anggaran ID 72: Bantuan Bangun Rumah Wa Nunung	TL-EEF5A23E		6/5/2026 19:57:14
+TX-9CBE117D	2026-02-14	Pengeluaran	7	500000	Penggunaan Dana Talangan dari Anggaran ID 72: Bantuan Bangun Rumah Wa Nunung	TL-EEF5A23E		6/5/2026 19:57:15
+TX-0D9FCF2E	2026-02-14	Pengeluaran	72	500000	Pemberian Talangan ke Anggaran ID 7: Bantuan Bangun Rumah Wa Nunung	TL-EEF5A23E		6/5/2026 19:57:16
+TX-11F40D04	2026-03-02	Pemasukan	9	300000	Penerimaan Talangan dari Anggaran ID 72: Pengharum Ruangan	TL-CD312A86		6/5/2026 19:59:51
+TX-ACF91B94	2026-03-02	Pengeluaran	9	300000	Penggunaan Dana Talangan dari Anggaran ID 72: Pengharum Ruangan	TL-CD312A86		6/5/2026 19:59:52
+TX-120363A0	2026-03-02	Pengeluaran	72	300000	Pemberian Talangan ke Anggaran ID 9: Pengharum Ruangan	TL-CD312A86		6/5/2026 19:59:52
+TX-F49E7CC3	2026-06-02	Pemasukan	13	2000000	Penerimaan Talangan dari Anggaran ID 12: Langganan Listrik dan Internet Mei Juni 	TL-548BE3E0		6/5/2026 20:01:50
+TX-9D90585A	2026-06-02	Pengeluaran	13	2000000	Penggunaan Dana Talangan dari Anggaran ID 12: Langganan Listrik dan Internet Mei Juni 	TL-548BE3E0		6/5/2026 20:01:50
+TX-73F2CF78	2026-06-02	Pengeluaran	12	2000000	Pemberian Talangan ke Anggaran ID 13: Langganan Listrik dan Internet Mei Juni 	TL-548BE3E0		6/5/2026 20:01:51
+TX-D5A07F7B	2026-05-05	Pengeluaran	11	2000000	Honor Kemit Bulan Mei			6/5/2026 20:03:54
+TX-68E435D8	2026-01-17	Pemasukan	73	1000000	Penerimaan Talangan dari Anggaran ID 4: Kekurangan Tahsinula Ahlaq	TL-006ADFE1		6/5/2026 20:09:25
+TX-CC01F90F	2026-01-17	Pengeluaran	73	1000000	Penggunaan Dana Talangan dari Anggaran ID 4: Kekurangan Tahsinula Ahlaq	TL-006ADFE1		6/5/2026 20:09:26
+TX-40B3A54F	2026-01-17	Pengeluaran	4	1000000	Pemberian Talangan ke Anggaran ID 73: Kekurangan Tahsinula Ahlaq	TL-006ADFE1		6/5/2026 20:09:27
+TX-14AA3B5B	2025-06-03	Pemasukan	73	200000	Penerimaan Talangan dari Anggaran ID 23: Bensin Samidi Antar Jagung ke H. Ade	TL-840B1905		6/5/2026 20:13:43
+TX-D6D2D100	2025-06-03	Pengeluaran	73	200000	Penggunaan Dana Talangan dari Anggaran ID 23: Bensin Samidi Antar Jagung ke H. Ade	TL-840B1905		6/5/2026 20:13:44
+TX-03E869B7	2025-06-03	Pengeluaran	23	200000	Pemberian Talangan ke Anggaran ID 73: Bensin Samidi Antar Jagung ke H. Ade	TL-840B1905		6/5/2026 20:13:45
+TX-C8D93234	2026-06-05	Pemasukan	68	150000	Penerimaan Talangan dari Anggaran ID 23: Obat Kompos Pa Yogi	TL-16DFAF57		6/5/2026 20:27:10
+TX-5B583822	2026-06-05	Pengeluaran	68	150000	Penggunaan Dana Talangan dari Anggaran ID 23: Obat Kompos Pa Yogi	TL-16DFAF57		6/5/2026 20:27:11
+TX-6384890A	2026-06-05	Pengeluaran	23	150000	Pemberian Talangan ke Anggaran ID 68: Obat Kompos Pa Yogi	TL-16DFAF57		6/5/2026 20:27:12
+TX-08F60B68	2026-06-05	Pemasukan	68	43600	Penerimaan Talangan dari Anggaran ID 47: Obat Kompos Pa yogi	TL-DA6AA5AC		6/5/2026 20:27:54
+TX-6000DB71	2026-06-05	Pengeluaran	68	43600	Penggunaan Dana Talangan dari Anggaran ID 47: Obat Kompos Pa yogi	TL-DA6AA5AC		6/5/2026 20:27:55
+TX-0475499E	2026-06-05	Pengeluaran	47	43600	Pemberian Talangan ke Anggaran ID 68: Obat Kompos Pa yogi	TL-DA6AA5AC		6/5/2026 20:27:55
+TX-CF77994A	2026-06-05	Pemasukan	68	300000	Penerimaan Talangan dari Anggaran ID 60: Obat Kompos Pa yogi	TL-406BAA09		6/5/2026 20:28:47
+TX-E312BE1F	2026-06-05	Pengeluaran	68	300000	Penggunaan Dana Talangan dari Anggaran ID 60: Obat Kompos Pa yogi	TL-406BAA09		6/5/2026 20:28:47
+TX-4164E0FF	2026-06-05	Pengeluaran	60	300000	Pemberian Talangan ke Anggaran ID 68: Obat Kompos Pa yogi	TL-406BAA09		6/5/2026 20:28:48
+TX-925456BF	2026-06-05	Pengeluaran	68	100000	Obat Kompos Pa Yogi			6/5/2026 20:29:26
+TX-5C0910B3	2026-06-05	Pemasukan	73	87000	Penerimaan Talangan dari Anggaran ID 13: Konsumsi Tamu kecamatan Pak Amrin 	TL-A4085233		6/5/2026 20:30:35
+TX-9332EAF7	2026-06-05	Pengeluaran	73	87000	Penggunaan Dana Talangan dari Anggaran ID 13: Konsumsi Tamu kecamatan Pak Amrin 	TL-A4085233		6/5/2026 20:30:36
+TX-9E40237C	2026-06-05	Pengeluaran	13	87000	Pemberian Talangan ke Anggaran ID 73: Konsumsi Tamu kecamatan Pak Amrin 	TL-A4085233		6/5/2026 20:30:37
