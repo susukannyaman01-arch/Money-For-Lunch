@@ -26,7 +26,8 @@ import {
   Transaksi, 
   Talangan, 
   Hutang,
-  formatTanggal
+  formatTanggal,
+  compareTanggal
 } from "../types";
 
 interface TalanganHutangViewProps {
@@ -284,8 +285,8 @@ export default function TalanganHutangView({
       }
       return true;
     });
-    // Sort oldest date first
-    return list.sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id));
+    // Sort oldest date first chronologically
+    return list.sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id));
   }, [talangan, talGiverFilter, talReceiverFilter, talSearch]);
 
   const activeOutstandingHutang = useMemo(() => {
@@ -302,8 +303,8 @@ export default function TalanganHutangView({
       }
       return true;
     });
-    // Sort oldest date first
-    return list.sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id));
+    // Sort oldest date first chronologically
+    return list.sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id));
   }, [hutang, hutBorrowerFilter, hutGiverFilter, hutSearch]);
 
   // Unique lists for dropdown filters inside Outstanding

@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { Camera, ListTodo, ArrowUpDown, Handshake, Check, AlertCircle } from "lucide-react";
-import { Transaksi, Talangan, Hutang, formatTanggal } from "../types";
+import { Transaksi, Talangan, Hutang, formatTanggal, compareTanggal } from "../types";
 
 interface RiwayatViewProps {
   transaksi: Transaksi[];
@@ -105,7 +105,7 @@ export default function RiwayatView({
                   </tr>
                 ) : (
                   // Sort oldest date first (terlama ke terbaru)
-                  transaksi.slice().sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id)).map((t) => (
+                  transaksi.slice().sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id)).map((t) => (
                     <tr key={t.id} className="hover:bg-slate-50/40 transition">
                       <td className="py-3 px-4 font-bold text-slate-400">
                         #{t.id}
@@ -179,7 +179,7 @@ export default function RiwayatView({
                   </tr>
                 ) : (
                   // Sort oldest date first (terlama ke terbaru)
-                  talangan.slice().sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id)).map((t) => (
+                  talangan.slice().sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id)).map((t) => (
                     <tr key={t.id} className="hover:bg-slate-50/40 transition">
                       <td className="py-3 px-4 font-bold text-slate-400">
                         #{t.id}
@@ -262,7 +262,7 @@ export default function RiwayatView({
                   </tr>
                 ) : (
                   // Sort oldest date first (terlama ke terbaru)
-                  hutang.slice().sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id)).map((h) => (
+                  hutang.slice().sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id)).map((h) => (
                     <tr key={h.id} className="hover:bg-slate-50/40 transition">
                       <td className="py-3 px-4 font-bold text-slate-400">
                         #{h.id}

@@ -42,7 +42,8 @@ import {
   Transaksi, 
   Talangan, 
   Hutang,
-  formatTanggal
+  formatTanggal,
+  compareTanggal
 } from "../types";
 
 interface DashboardProps {
@@ -215,7 +216,7 @@ export default function Dashboard({
       }
       return true;
     });
-    return list.sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id));
+    return list.sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id));
   }, [transaksi, filterType, filterSource, filterSub, searchQuery]);
 
   // Sums for Buku Kas footer

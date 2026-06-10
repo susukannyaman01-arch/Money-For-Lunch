@@ -25,7 +25,8 @@ import {
   Transaksi,
   Hutang,
   Talangan,
-  formatTanggal
+  formatTanggal,
+  compareTanggal
 } from "../types";
 
 interface RekapViewProps {
@@ -145,7 +146,7 @@ export default function RekapView({
     return transaksi
       .filter((t) => t.id_anggaran === selectedAnggaranId)
       .slice()
-      .sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id));
+      .sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id));
   }, [transaksi, selectedAnggaranId]);
 
   // Selected Ledger exact totals

@@ -22,7 +22,8 @@ import {
   SumberDana, 
   Anggaran, 
   Transaksi,
-  formatTanggal
+  formatTanggal,
+  compareTanggal
 } from "../types";
 
 interface TransaksiViewProps {
@@ -269,8 +270,8 @@ export default function TransaksiView({
     if (!showAutoTx) {
       list = list.filter((t) => !t.ref_id);
     }
-    // Sort chronological: oldest to newest
-    return list.sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id.localeCompare(b.id));
+    // Sort chronological: oldest to newest chronologically
+    return list.sort((a, b) => compareTanggal(a.tanggal, b.tanggal) || a.id.localeCompare(b.id));
   }, [transaksi, showAutoTx]);
 
   // Search Filter on recent table list

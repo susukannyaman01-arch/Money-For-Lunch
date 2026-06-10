@@ -312,3 +312,14 @@ export function formatTanggal(dateStr: string | undefined | null): string {
   }
   return dateStr;
 }
+
+export function compareTanggal(tanggalA: string, tanggalB: string): number {
+  if (!tanggalA) return 1;
+  if (!tanggalB) return -1;
+  const timeA = new Date(tanggalA).getTime();
+  const timeB = new Date(tanggalB).getTime();
+  if (!isNaN(timeA) && !isNaN(timeB)) {
+    return timeA - timeB;
+  }
+  return tanggalA.localeCompare(tanggalB);
+}
