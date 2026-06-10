@@ -87,7 +87,7 @@ export default function App() {
     if (!saved) return INITIAL_TRANSAKSI;
     try {
       const parsed = JSON.parse(saved);
-      return parsed.length > 0 ? parsed : INITIAL_TRANSAKSI;
+      return Array.isArray(parsed) ? parsed : INITIAL_TRANSAKSI;
     } catch {
       return INITIAL_TRANSAKSI;
     }
@@ -98,7 +98,7 @@ export default function App() {
     if (!saved) return INITIAL_TALANGAN;
     try {
       const parsed = JSON.parse(saved);
-      return parsed.length > 0 ? parsed : INITIAL_TALANGAN;
+      return Array.isArray(parsed) ? parsed : INITIAL_TALANGAN;
     } catch {
       return INITIAL_TALANGAN;
     }
@@ -109,7 +109,7 @@ export default function App() {
     if (!saved) return INITIAL_HUTANG;
     try {
       const parsed = JSON.parse(saved);
-      return parsed.length > 0 ? parsed : INITIAL_HUTANG;
+      return Array.isArray(parsed) ? parsed : INITIAL_HUTANG;
     } catch {
       return INITIAL_HUTANG;
     }
