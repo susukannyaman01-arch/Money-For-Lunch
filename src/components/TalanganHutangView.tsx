@@ -25,7 +25,8 @@ import {
   Anggaran, 
   Transaksi, 
   Talangan, 
-  Hutang 
+  Hutang,
+  formatTanggal
 } from "../types";
 
 interface TalanganHutangViewProps {
@@ -740,7 +741,7 @@ export default function TalanganHutangView({
                   activeOutstandingTalangan.map((t) => (
                     <tr key={t.id} className="hover:bg-slate-50/50 transition">
                       <td className="py-2.5 px-1 whitespace-nowrap font-bold text-slate-500">
-                        {t.tanggal}
+                        {formatTanggal(t.tanggal)}
                       </td>
                       <td className="py-2.5 px-1">
                         <p className="font-extrabold text-red-500 text-[9px] uppercase">Dari: {t.subGiver}</p>
@@ -882,7 +883,7 @@ export default function TalanganHutangView({
                   activeOutstandingHutang.map((h) => (
                     <tr key={h.id} className="hover:bg-slate-50/50 transition">
                       <td className="py-2.5 px-1 whitespace-nowrap font-bold text-slate-500">
-                        {h.tanggal}
+                        {formatTanggal(h.tanggal)}
                       </td>
                       <td className="py-2.5 px-1 font-bold text-slate-700 font-sans">
                         {h.peminjam}
@@ -1065,7 +1066,7 @@ export default function TalanganHutangView({
                       printData.rows.map((row, idx) => (
                         <tr key={row.id}>
                           <td className="border border-black py-2 px-1 text-center">{idx + 1}</td>
-                          <td className="border border-black py-2 px-2 whitespace-nowrap">{row.tanggal}</td>
+                          <td className="border border-black py-2 px-2 whitespace-nowrap">{formatTanggal(row.tanggal)}</td>
                           {printData.tipe === "talangan" ? (
                             <>
                               <td className="border border-black py-2 px-2 font-medium">{row.subGiver}</td>

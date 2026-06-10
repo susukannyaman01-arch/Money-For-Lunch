@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { Camera, ListTodo, ArrowUpDown, Handshake, Check, AlertCircle } from "lucide-react";
-import { Transaksi, Talangan, Hutang } from "../types";
+import { Transaksi, Talangan, Hutang, formatTanggal } from "../types";
 
 interface RiwayatViewProps {
   transaksi: Transaksi[];
@@ -111,7 +111,7 @@ export default function RiwayatView({
                         #{t.id}
                       </td>
                       <td className="py-3 px-4 text-slate-500 font-bold whitespace-nowrap">
-                        {t.tanggal}
+                        {formatTanggal(t.tanggal)}
                       </td>
                       <td className="py-3 px-4">
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-[8px] font-extrabold ${
@@ -185,7 +185,7 @@ export default function RiwayatView({
                         #{t.id}
                       </td>
                       <td className="py-3 px-4 text-slate-500 font-bold whitespace-nowrap">
-                        {t.tanggal}
+                        {formatTanggal(t.tanggal)}
                       </td>
                       <td className="py-3 px-4 max-w-[150px]">
                         <p className="font-extrabold text-red-500 text-[9px] uppercase">Dari: {t.subGiver}</p>
@@ -227,7 +227,7 @@ export default function RiwayatView({
                         </span>
                       </td>
                       <td className="py-3 px-4 font-bold text-slate-500 whitespace-nowrap">
-                        {t.tanggal_lunas || "-"}
+                        {t.tanggal_lunas ? formatTanggal(t.tanggal_lunas) : "-"}
                       </td>
                     </tr>
                   ))
@@ -268,7 +268,7 @@ export default function RiwayatView({
                         #{h.id}
                       </td>
                       <td className="py-3 px-4 text-slate-500 font-bold whitespace-nowrap">
-                        {h.tanggal}
+                        {formatTanggal(h.tanggal)}
                       </td>
                       <td className="py-3 px-4 font-extrabold text-slate-700 whitespace-nowrap">
                         {h.peminjam}
@@ -312,7 +312,7 @@ export default function RiwayatView({
                         </span>
                       </td>
                       <td className="py-3 px-4 font-bold text-slate-500 whitespace-nowrap">
-                        {h.tanggal_lunas || "-"}
+                        {h.tanggal_lunas ? formatTanggal(h.tanggal_lunas) : "-"}
                       </td>
                     </tr>
                   ))

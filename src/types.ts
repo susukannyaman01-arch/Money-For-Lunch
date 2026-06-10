@@ -294,3 +294,21 @@ export const MASTER_ANGGARAN: Anggaran[] = [
   { id: 72, id_bidang: 6, id_kegiatan: 32, id_sub: 72, id_sumber: 8, pagu: 21450000 },
   { id: 73, id_bidang: 7, id_kegiatan: 33, id_sub: 73, id_sumber: 9, pagu: 200000000 }
 ];
+
+export function formatTanggal(dateStr: string | undefined | null): string {
+  if (!dateStr) return "-";
+  // If it's a date object inside string dynamic or standard YYYY-MM-DD
+  try {
+    const d = new Date(dateStr);
+    if (!isNaN(d.getTime())) {
+      const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+      const day = String(d.getDate()).padStart(2, "0");
+      const month = months[d.getMonth()];
+      const year = d.getFullYear();
+      return `${day} ${month} ${year}`;
+    }
+  } catch {
+    // ignore
+  }
+  return dateStr;
+}

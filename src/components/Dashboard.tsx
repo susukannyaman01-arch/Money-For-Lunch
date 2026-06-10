@@ -41,7 +41,8 @@ import {
   Anggaran, 
   Transaksi, 
   Talangan, 
-  Hutang 
+  Hutang,
+  formatTanggal
 } from "../types";
 
 interface DashboardProps {
@@ -240,7 +241,7 @@ export default function Dashboard({
     let tableRows = filteredBukuKas.map(t => {
       return `
         <tr>
-          <td>${t.tanggal}</td>
+          <td>${formatTanggal(t.tanggal)}</td>
           <td>${t.tipe === "Pemasukan" ? "Penerimaan" : "Belanja"}</td>
           <td>${t.sumberDana}</td>
           <td>
@@ -680,7 +681,7 @@ export default function Dashboard({
                 filteredBukuKas.map((t) => (
                   <tr key={t.id} className="hover:bg-slate-50/50 transition duration-150">
                     <td className="py-3 px-4 font-bold text-slate-600 whitespace-nowrap">
-                      {t.tanggal}
+                      {formatTanggal(t.tanggal)}
                     </td>
                     <td className="py-3 px-4 whitespace-nowrap">
                       <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-bold border ${

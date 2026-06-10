@@ -24,7 +24,8 @@ import {
   Anggaran, 
   Transaksi,
   Hutang,
-  Talangan
+  Talangan,
+  formatTanggal
 } from "../types";
 
 interface RekapViewProps {
@@ -733,7 +734,7 @@ export default function RekapView({
                           const matchingHutang = t.ref_id ? hutang.find((h) => h.id === t.ref_id) : null;
                           return (
                             <tr key={t.id} className="hover:bg-slate-50/50 transition">
-                              <td className="py-2.5 px-3 whitespace-nowrap font-bold text-slate-500">{t.tanggal}</td>
+                              <td className="py-2.5 px-3 whitespace-nowrap font-bold text-slate-500">{formatTanggal(t.tanggal)}</td>
                               <td className="py-2.5 px-3 whitespace-nowrap">
                                 <span className={`inline-flex px-1.5 py-0.5 rounded text-[8px] font-extrabold ${
                                   t.tipe === "Pemasukan"

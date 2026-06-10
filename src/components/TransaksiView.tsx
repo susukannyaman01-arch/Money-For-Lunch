@@ -21,7 +21,8 @@ import {
   SubKegiatan, 
   SumberDana, 
   Anggaran, 
-  Transaksi 
+  Transaksi,
+  formatTanggal
 } from "../types";
 
 interface TransaksiViewProps {
@@ -664,7 +665,7 @@ export default function TransaksiView({
                 filteredRecentTxs.map((t) => (
                   <tr key={t.id} className="hover:bg-slate-50/50 transition duration-150">
                     <td className="py-3 px-3 whitespace-nowrap font-bold text-slate-600">
-                      {t.tanggal}
+                      {formatTanggal(t.tanggal)}
                     </td>
                     <td className="py-3 px-3 whitespace-nowrap">
                       <span className={`inline-flex px-2 py-0.5 rounded text-[9px] font-extrabold ${
