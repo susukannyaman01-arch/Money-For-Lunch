@@ -23,7 +23,8 @@ import {
   Anggaran, 
   Transaksi,
   formatTanggal,
-  compareTanggal
+  compareTanggal,
+  formatKeterangan
 } from "../types";
 
 interface TransaksiViewProps {
@@ -695,7 +696,7 @@ export default function TransaksiView({
                       )}
                     </td>
                     <td className="py-3 px-3 text-slate-500 max-w-[180px] break-words whitespace-normal font-medium">
-                      {t.keterangan}
+                      {formatKeterangan(t.keterangan)}
                     </td>
                     <td className="py-3 px-3 text-center">
                       {t.bukti ? (

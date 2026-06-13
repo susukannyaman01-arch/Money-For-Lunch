@@ -15,7 +15,8 @@ import {
   AlertTriangle,
   FileSpreadsheet,
   Printer,
-  X
+  X,
+  Pencil
 } from "lucide-react";
 import { 
   Bidang, 
@@ -27,7 +28,8 @@ import {
   Talangan, 
   Hutang,
   formatTanggal,
-  compareTanggal
+  compareTanggal,
+  formatKeterangan
 } from "../types";
 
 interface TalanganHutangViewProps {
@@ -42,9 +44,11 @@ interface TalanganHutangViewProps {
   onAddTalangan: (newTal: Omit<Talangan, "id" | "status" | "tanggal_lunas" | "timestamp">) => void;
   onPayTalangan: (id: string, tanggal: string) => void;
   onDeleteTalangan: (id: string) => void;
+  onUpdateTalangan: (id: string, updatedTal: Omit<Talangan, "id" | "status" | "tanggal_lunas" | "timestamp">) => void;
   onAddHutang: (newHut: Omit<Hutang, "id" | "status" | "tanggal_lunas" | "timestamp">) => void;
   onPayHutang: (id: string, tanggal: string) => void;
   onDeleteHutang: (id: string) => void;
+  onUpdateHutang: (id: string, updatedHut: Omit<Hutang, "id" | "status" | "tanggal_lunas" | "timestamp">) => void;
   setViewReceipt: (url: string, name: string) => void;
 }
 
@@ -60,9 +64,11 @@ export default function TalanganHutangView({
   onAddTalangan,
   onPayTalangan,
   onDeleteTalangan,
+  onUpdateTalangan,
   onAddHutang,
   onPayHutang,
   onDeleteHutang,
+  onUpdateHutang,
   setViewReceipt
 }: TalanganHutangViewProps) {
   // 1. Talangan Form state
@@ -98,6 +104,50 @@ export default function TalanganHutangView({
     tipe: "talangan" | "hutang";
     rows: any[];
   } | null>(null);
+
+  // Edit Modals state
+  const [editingTalangan, setEditingTalangan] = useState<Talangan | null>(null);
+  const [editingHutang, setEditingHutang] = useState<Hutang | null>(null);
+
+  // Temp form states for editing Talangan
+  const [editTalTanggal, setEditTalTanggal] = useState("");
+  const [editTalGiverId, setEditTalGiverId] = useState<number | "">("");
+  const [editTalReceiverId, setEditTalReceiverId] = useState<number | "">("");
+  const [editTalJumlah, setEditTalJumlah] = useState<number | "">("");
+  const [editTalKeterangan, setEditTalKeterangan] = useState("");
+  const [editTalBukti, setEditTalBukti] = useState("");
+  const [editTalFileName, setEditTalFileName] = useState("");
+
+  // Temp form states for editing Hutang
+  const [editHutTanggal, setEditHutTanggal] = useState("");
+  const [editHutGiverId, setEditHutGiverId] = useState<number | "">("");
+  const [editHutPeminjam, setEditHutPeminjam] = useState("");
+  const [editHutJumlah, setEditHutJumlah] = useState<number | "">("");
+  const [editHutKeterangan, setEditHutKeterangan] = useState("");
+  const [editHutBukti, setEditHutBukti] = useState("");
+  const [editHutFileName, setEditHutFileName] = useState("");
+
+  const startEditTalangan = (t: Talangan) => {
+    setEditingTalangan(t);
+    setEditTalTanggal(t.tanggal);
+    setEditTalGiverId(t.id_anggaran_pemberi);
+    setEditTalReceiverId(t.id_anggaran_penerima);
+    setEditTalJumlah(t.jumlah);
+    setEditTalKeterangan(t.keterangan || "");
+    setEditTalBukti(t.bukti || "");
+    setEditTalFileName(t.bukti ? "bukti_talangan_terlampir.png" : "");
+  };
+
+  const startEditHutang = (h: Hutang) => {
+    setEditingHutang(h);
+    setEditHutTanggal(h.tanggal);
+    setEditHutGiverId(h.id_anggaran_pemberi);
+    setEditHutPeminjam(h.peminjam);
+    setEditHutJumlah(h.jumlah);
+    setEditHutKeterangan(h.keterangan || "");
+    setEditHutBukti(h.bukti || "");
+    setEditHutFileName(h.bukti ? "bukti_hutang_terlampir.png" : "");
+  };
 
   const formatIDR = (num: number) => {
     return new Intl.NumberFormat("id-ID", {
@@ -268,6 +318,112 @@ export default function TalanganHutangView({
     setHutJumlah("");
     setHutKeterangan("");
     clearFile("hut");
+  };
+
+  // Submit Edit Talangan
+  const handleSubmitEditTalangan = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingTalangan) return;
+    if (!editTalGiverId || !editTalReceiverId) {
+      alert("Mohon pilih anggaran pemberi dan penerima talangan!");
+      return;
+    }
+    if (editTalGiverId === editTalReceiverId) {
+      alert("Anggaran pemberi dan penerima talangan tidak boleh sama!");
+      return;
+    }
+
+    const amount = Number(editTalJumlah);
+    if (!amount || amount <= 0) {
+      alert("Nominal talangan harus lebih dari Rp 0!");
+      return;
+    }
+
+    // Check Giver balance (ignoring current talangan transactions)
+    let giverTerpakai = 0;
+    transaksi.forEach((tx) => {
+      if (tx.ref_id === editingTalangan.id) {
+        return; // Ignore existing transactions under this talangan
+      }
+      if (tx.id_anggaran === Number(editTalGiverId)) {
+        if (tx.tipe === "Pengeluaran") giverTerpakai += tx.jumlah;
+        else if (tx.tipe === "Pemasukan") giverTerpakai -= tx.jumlah;
+      }
+    });
+
+    const giverChoice = anggaranChoices.find((c) => c.id === Number(editTalGiverId));
+    const giverPagu = giverChoice ? giverChoice.pagu : 0;
+    const giverSisa = giverPagu - giverTerpakai;
+
+    if (amount > giverSisa) {
+      alert(
+        `Saldo kas pemberi (${formatIDR(giverSisa)}) tidak mencukupi untuk ditalangi sebesar ${formatIDR(amount)}!`
+      );
+      return;
+    }
+
+    onUpdateTalangan(editingTalangan.id, {
+      id_anggaran_pemberi: Number(editTalGiverId),
+      id_anggaran_penerima: Number(editTalReceiverId),
+      jumlah: amount,
+      tanggal: editTalTanggal,
+      keterangan: editTalKeterangan,
+      bukti: editTalBukti || undefined
+    });
+
+    // Close Modal
+    setEditingTalangan(null);
+  };
+
+  // Submit Edit Hutang
+  const handleSubmitEditHutang = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingHutang) return;
+    if (!editHutGiverId) {
+      alert("Mohon pilih anggaran pemberi pinjaman kas!");
+      return;
+    }
+
+    const amount = Number(editHutJumlah);
+    if (!amount || amount <= 0) {
+      alert("Nominal pinjaman harus lebih dari Rp 0!");
+      return;
+    }
+
+    // Check Giver balance (ignoring current hutang transactions)
+    let giverTerpakai = 0;
+    transaksi.forEach((tx) => {
+      if (tx.ref_id === editingHutang.id) {
+        return; // Ignore existing transactions under this hutang
+      }
+      if (tx.id_anggaran === Number(editHutGiverId)) {
+        if (tx.tipe === "Pengeluaran") giverTerpakai += tx.jumlah;
+        else if (tx.tipe === "Pemasukan") giverTerpakai -= tx.jumlah;
+      }
+    });
+
+    const giverChoice = anggaranChoices.find((c) => c.id === Number(editHutGiverId));
+    const giverPagu = giverChoice ? giverChoice.pagu : 0;
+    const giverSisa = giverPagu - giverTerpakai;
+
+    if (amount > giverSisa) {
+      alert(
+        `Saldo kas pemberi (${formatIDR(giverSisa)}) tidak mencukupi untuk dipinjamkan sebesar ${formatIDR(amount)}!`
+      );
+      return;
+    }
+
+    onUpdateHutang(editingHutang.id, {
+      id_anggaran_pemberi: Number(editHutGiverId),
+      peminjam: editHutPeminjam,
+      jumlah: amount,
+      tanggal: editHutTanggal,
+      keterangan: editHutKeterangan,
+      bukti: editHutBukti || undefined
+    });
+
+    // Close Modal
+    setEditingHutang(null);
   };
 
   // Outstanding filter calculations
@@ -749,7 +905,7 @@ export default function TalanganHutangView({
                         <p className="font-extrabold text-emerald-600 text-[9px] uppercase mt-0.5">Ke: {t.subReceiver}</p>
                       </td>
                       <td className="py-2.5 px-1 max-w-[120px] break-words whitespace-normal text-slate-500">
-                        {t.keterangan || "-"}
+                        {formatKeterangan(t.keterangan || "-")}
                       </td>
                       <td className="py-2.5 px-1 text-center">
                         {t.bukti ? (
@@ -773,6 +929,13 @@ export default function TalanganHutangView({
                             className="px-2 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 border border-emerald-100 rounded-lg text-[9px] font-extrabold uppercase tracking-tight transition cursor-pointer"
                           >
                             LUNASI
+                          </button>
+                          <button
+                            onClick={() => startEditTalangan(t)}
+                            className="p-1 text-amber-500 hover:bg-amber-50 border border-amber-100 rounded-lg transition cursor-pointer"
+                            title="Edit talangan"
+                          >
+                            <Pencil className="w-3 h-3" />
                           </button>
                           <button
                             onClick={() => onDeleteTalangan(t.id)}
@@ -891,7 +1054,7 @@ export default function TalanganHutangView({
                       </td>
                       <td className="py-2.5 px-1 max-w-[130px]">
                         <p className="font-extrabold text-slate-700 truncate">{h.subGiver}</p>
-                        <p className="text-[10px] text-slate-400 truncate mt-0.5">{h.keterangan || "-"}</p>
+                        <p className="text-[10px] text-slate-400 truncate mt-0.5">{formatKeterangan(h.keterangan || "-")}</p>
                       </td>
                       <td className="py-2.5 px-1 text-center">
                         {h.bukti ? (
@@ -915,6 +1078,13 @@ export default function TalanganHutangView({
                             className="px-2 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 border border-emerald-100 rounded-lg text-[9px] font-extrabold uppercase tracking-tight transition cursor-pointer"
                           >
                             LUNASI
+                          </button>
+                          <button
+                            onClick={() => startEditHutang(h)}
+                            className="p-1 text-amber-500 hover:bg-amber-50 border border-amber-100 rounded-lg transition cursor-pointer"
+                            title="Edit hutang"
+                          >
+                            <Pencil className="w-3 h-3" />
                           </button>
                           <button
                             onClick={() => onDeleteHutang(h.id)}
@@ -1079,7 +1249,7 @@ export default function TalanganHutangView({
                               <td className="border border-black py-2 px-2 font-medium">{row.subGiver}</td>
                             </>
                           )}
-                          <td className="border border-black py-2 px-2 max-w-[150px] break-words whitespace-normal">{row.keterangan || "-"}</td>
+                          <td className="border border-black py-2 px-2 max-w-[150px] break-words whitespace-normal">{formatKeterangan(row.keterangan || "-")}</td>
                           <td className="border border-black py-2 px-2 text-right font-bold tabular-nums">
                             {formatIDR(row.jumlah).replace("Rp", "Rp ")}
                           </td>
@@ -1130,6 +1300,329 @@ export default function TalanganHutangView({
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Talangan Modal */}
+      {editingTalangan && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white w-full max-w-xl rounded-2xl shadow-2xl border border-slate-100 flex flex-col">
+            <div className="p-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between rounded-t-2xl">
+              <div className="flex items-center space-x-2">
+                <Pencil className="w-5 h-5 text-amber-500" />
+                <div>
+                  <h4 className="text-sm font-extrabold text-slate-800">Edit Data Talangan Aktif</h4>
+                  <p className="text-[10px] text-slate-400 font-medium">Ubah rincian pengalokasian dana talangan kas desa</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setEditingTalangan(null)}
+                className="p-2 hover:bg-slate-100 border border-slate-200 text-slate-400 rounded-xl transition cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmitEditTalangan} className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Tanggal Talangan</label>
+                  <input
+                    type="date"
+                    required
+                    value={editTalTanggal}
+                    onChange={(e) => setEditTalTanggal(e.target.value)}
+                    className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all placeholder:text-slate-350"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Jumlah Nominal (Rp)</label>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    placeholder="Contoh: 500000"
+                    value={editTalJumlah}
+                    onChange={(e) => setEditTalJumlah(e.target.value === "" ? "" : Number(e.target.value))}
+                    className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all placeholder:text-slate-350"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Anggaran Pemberi (Kas Sumber)</label>
+                <select
+                  required
+                  value={editTalGiverId}
+                  onChange={(e) => setEditTalGiverId(Number(e.target.value))}
+                  className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all"
+                >
+                  <option value="">Pilih Anggaran Sumber...</option>
+                  {anggaranChoices.map((choice) => (
+                    <option key={choice.id} value={choice.id}>
+                      {choice.displayText}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Anggaran Penerima (Kas Tujuan)</label>
+                <select
+                  required
+                  value={editTalReceiverId}
+                  onChange={(e) => setEditTalReceiverId(Number(e.target.value))}
+                  className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all"
+                >
+                  <option value="">Pilih Anggaran Urgensi...</option>
+                  {anggaranChoices.map((choice) => (
+                    <option key={choice.id} value={choice.id}>
+                      {choice.displayText}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Keterangan / Alasan Talangan</label>
+                <textarea
+                  required
+                  rows={2}
+                  placeholder="Ketik rincian alasan talangan dana di sini..."
+                  value={editTalKeterangan}
+                  onChange={(e) => setEditTalKeterangan(e.target.value)}
+                  className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-medium text-slate-600 focus:outline-none transition-all placeholder:text-slate-350 resize-none"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Unggah Bukti Transaksi baru (Opsional)</label>
+                <div className="flex items-center space-x-3">
+                  <div className="relative flex-1">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="edit-tal-bukti-file"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setEditTalFileName(file.name);
+                          const reader = new FileReader();
+                          reader.onload = () => {
+                            if (typeof reader.result === "string") {
+                              setEditTalBukti(reader.result);
+                            }
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      }}
+                      className="hidden"
+                    />
+                    <label
+                      htmlFor="edit-tal-bukti-file"
+                      className="flex items-center justify-center space-x-2 w-full px-4 py-2 border border-dashed border-slate-200 rounded-xl text-slate-500 hover:text-slate-600 hover:bg-slate-50/50 transition-all text-xs font-bold cursor-pointer"
+                    >
+                      <Camera className="w-4 h-4 text-slate-400" />
+                      <span>{editTalFileName || "Pilih Berkas Bukti (Gambar)"}</span>
+                    </label>
+                  </div>
+                  {editTalBukti && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditTalBukti("");
+                        setEditTalFileName("");
+                        const fileInput = document.getElementById("edit-tal-bukti-file") as HTMLInputElement;
+                        if (fileInput) fileInput.value = "";
+                      }}
+                      className="p-2 bg-red-50 hover:bg-red-100 text-red-500 border border-red-100 rounded-xl transition cursor-pointer"
+                      title="Hapus lampiran"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end space-x-2 pt-2 border-t border-slate-50">
+                <button
+                  type="button"
+                  onClick={() => setEditingTalangan(null)}
+                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-605 text-xs font-bold rounded-xl transition cursor-pointer"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-xl shadow transition cursor-pointer"
+                >
+                  Simpan Perubahan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Hutang Modal */}
+      {editingHutang && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white w-full max-w-xl rounded-2xl shadow-2xl border border-slate-100 flex flex-col">
+            <div className="p-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between rounded-t-2xl">
+              <div className="flex items-center space-x-2">
+                <Pencil className="w-5 h-5 text-amber-500" />
+                <div>
+                  <h4 className="text-sm font-extrabold text-slate-800">Edit Data Pinjaman Hutang Aktif</h4>
+                  <p className="text-[10px] text-slate-400 font-medium">Ubah rincian pengeluaran pinjaman kas desa kepada pribadi</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setEditingHutang(null)}
+                className="p-2 hover:bg-slate-100 border border-slate-200 text-slate-400 rounded-xl transition cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmitEditHutang} className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Tanggal Pinjaman</label>
+                  <input
+                    type="date"
+                    required
+                    value={editHutTanggal}
+                    onChange={(e) => setEditHutTanggal(e.target.value)}
+                    className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all placeholder:text-slate-350"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Pihak Peminjam (Nama)</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Nama lengkap peminjam..."
+                    value={editHutPeminjam}
+                    onChange={(e) => setEditHutPeminjam(e.target.value)}
+                    className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all placeholder:text-slate-350"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1 col-span-2">
+                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Jumlah Nominal (Rp)</label>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    placeholder="Contoh: 1000000"
+                    value={editHutJumlah}
+                    onChange={(e) => setEditHutJumlah(e.target.value === "" ? "" : Number(e.target.value))}
+                    className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all placeholder:text-slate-350"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Anggaran Sumber Kas Pemberi</label>
+                <select
+                  required
+                  value={editHutGiverId}
+                  onChange={(e) => setEditHutGiverId(Number(e.target.value))}
+                  className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none transition-all"
+                >
+                  <option value="">Pilih Anggaran Kas...</option>
+                  {anggaranChoices.map((choice) => (
+                    <option key={choice.id} value={choice.id}>
+                      {choice.displayText}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Keterangan / Alasan Peminjaman</label>
+                <textarea
+                  required
+                  rows={2}
+                  placeholder="Ketik rincian alasan peminjaman dana di sini..."
+                  value={editHutKeterangan}
+                  onChange={(e) => setEditHutKeterangan(e.target.value)}
+                  className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-amber-400 rounded-xl px-3 py-2 text-xs font-medium text-slate-600 focus:outline-none transition-all placeholder:text-slate-350 resize-none"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">Unggah Bukti Pinjaman baru (Opsional)</label>
+                <div className="flex items-center space-x-3">
+                  <div className="relative flex-1">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="edit-hut-bukti-file"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setEditHutFileName(file.name);
+                          const reader = new FileReader();
+                          reader.onload = () => {
+                            if (typeof reader.result === "string") {
+                              setEditHutBukti(reader.result);
+                            }
+                          };
+                          reader.readAsDataURL(file);
+                        }
+                      }}
+                      className="hidden"
+                    />
+                    <label
+                      htmlFor="edit-hut-bukti-file"
+                      className="flex items-center justify-center space-x-2 w-full px-4 py-2 border border-dashed border-slate-200 rounded-xl text-slate-500 hover:text-slate-600 hover:bg-slate-50/50 transition-all text-xs font-bold cursor-pointer"
+                    >
+                      <Camera className="w-4 h-4 text-slate-400" />
+                      <span>{editHutFileName || "Pilih Berkas Bukti (Gambar)"}</span>
+                    </label>
+                  </div>
+                  {editHutBukti && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditHutBukti("");
+                        setEditHutFileName("");
+                        const fileInput = document.getElementById("edit-hut-bukti-file") as HTMLInputElement;
+                        if (fileInput) fileInput.value = "";
+                      }}
+                      className="p-2 bg-red-50 hover:bg-red-100 text-red-500 border border-red-100 rounded-xl transition cursor-pointer"
+                      title="Hapus lampiran"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end space-x-2 pt-2 border-t border-slate-50">
+                <button
+                  type="button"
+                  onClick={() => setEditingHutang(null)}
+                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold rounded-xl transition cursor-pointer"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-xl shadow transition cursor-pointer"
+                >
+                  Simpan Perubahan
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

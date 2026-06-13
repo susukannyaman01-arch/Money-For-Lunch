@@ -183,7 +183,12 @@ export default function App() {
           action: "export",
           transaksi: transaksi,
           talangan: talangan,
-          hutang: hutang
+          hutang: hutang,
+          bidang: bidangList,
+          kegiatan: kegiatanList,
+          subKegiatan: subKegiatanList,
+          sumberDana: sumberDanaList,
+          anggaran: anggaranList
         };
 
         const response = await fetch(scriptUrl, {
@@ -217,7 +222,18 @@ export default function App() {
     }, 1200); // 1.2 second debounce to prevent rapid fire
 
     return () => clearTimeout(handler);
-  }, [transaksi, talangan, hutang, isAutoSync, scriptUrl]);
+  }, [
+    transaksi, 
+    talangan, 
+    hutang, 
+    bidangList, 
+    kegiatanList, 
+    subKegiatanList, 
+    sumberDanaList, 
+    anggaranList, 
+    isAutoSync, 
+    scriptUrl
+  ]);
 
   // Sync to localStorage
   useEffect(() => {
@@ -506,6 +522,61 @@ export default function App() {
     setTransaksi((prev) => [...prev, paybackSenderTrans, paybackReceiverTrans]);
   };
 
+  // Actions: Update Talangan and reconstruct cascading companion journal entries
+  const handleUpdateTalangan = (id: string, updatedTal: Omit<Talangan, "id" | "status" | "tanggal_lunas" | "timestamp">) => {
+    // Update the talangan entry
+    setTalangan((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, ...updatedTal } : t))
+    );
+
+    // Reconstruct companion transactions referencing this ID starting with TX-AT-
+    setTransaksi((prev) => {
+      const filtered = prev.filter((tx) => !(tx.ref_id === id && tx.id.startsWith("TX-AT-")));
+      
+      const timestamp = new Date().toISOString();
+      const giverLabel = getAnggaranLabel(updatedTal.id_anggaran_pemberi);
+      const receiverLabel = getAnggaranLabel(updatedTal.id_anggaran_penerima);
+
+      const companionRecTrans: Transaksi = {
+        id: "TX-AT-" + Math.random().toString(36).substring(2, 9).toUpperCase(),
+        tanggal: updatedTal.tanggal,
+        tipe: "Pemasukan",
+        id_anggaran: updatedTal.id_anggaran_penerima,
+        jumlah: updatedTal.jumlah,
+        keterangan: `Penerimaan Talangan dari Anggaran ${giverLabel}: ${updatedTal.keterangan}`,
+        ref_id: id,
+        bukti: updatedTal.bukti,
+        timestamp
+      };
+
+      const companionExpTrans: Transaksi = {
+        id: "TX-AT-" + Math.random().toString(36).substring(2, 9).toUpperCase(),
+        tanggal: updatedTal.tanggal,
+        tipe: "Pengeluaran",
+        id_anggaran: updatedTal.id_anggaran_penerima,
+        jumlah: updatedTal.jumlah,
+        keterangan: `Penggunaan Dana Talangan dari Anggaran ${giverLabel}: ${updatedTal.keterangan}`,
+        ref_id: id,
+        bukti: updatedTal.bukti,
+        timestamp
+      };
+
+      const companionGiverTrans: Transaksi = {
+        id: "TX-AT-" + Math.random().toString(36).substring(2, 9).toUpperCase(),
+        tanggal: updatedTal.tanggal,
+        tipe: "Pengeluaran",
+        id_anggaran: updatedTal.id_anggaran_pemberi,
+        jumlah: updatedTal.jumlah,
+        keterangan: `Pemberian Talangan ke Anggaran ${receiverLabel}: ${updatedTal.keterangan}`,
+        ref_id: id,
+        bukti: updatedTal.bukti,
+        timestamp
+      };
+
+      return [...filtered, companionRecTrans, companionExpTrans, companionGiverTrans];
+    });
+  };
+
   // Actions: Delete Talangan and cascade delete all related auto transactions
   const handleDeleteTalangan = (id: string) => {
     requestConfirm(
@@ -573,6 +644,34 @@ export default function App() {
     };
 
     setTransaksi((prev) => [...prev, paybackHutTrans]);
+  };
+
+  // Actions: Update Hutang and reconstruct cascading companion journal entries
+  const handleUpdateHutang = (id: string, updatedHut: Omit<Hutang, "id" | "status" | "tanggal_lunas" | "timestamp">) => {
+    // Update the hutang entry
+    setHutang((prev) =>
+      prev.map((h) => (h.id === id ? { ...h, ...updatedHut } : h))
+    );
+
+    // Reconstruct companion transactions referencing this ID starting with TX-AT-
+    setTransaksi((prev) => {
+      const filtered = prev.filter((tx) => !(tx.ref_id === id && tx.id.startsWith("TX-AT-")));
+      
+      const timestamp = new Date().toISOString();
+      const companionHutTrans: Transaksi = {
+        id: "TX-AT-" + Math.random().toString(36).substring(2, 9).toUpperCase(),
+        tanggal: updatedHut.tanggal,
+        tipe: "Pengeluaran",
+        id_anggaran: updatedHut.id_anggaran_pemberi,
+        jumlah: updatedHut.jumlah,
+        keterangan: `Pemberian Pinjaman Hutang ke ${updatedHut.peminjam}: ${updatedHut.keterangan}`,
+        ref_id: id,
+        bukti: updatedHut.bukti,
+        timestamp
+      };
+
+      return [...filtered, companionHutTrans];
+    });
   };
 
   // Actions: Delete Hutang and cascade delete all related auto transactions
@@ -1053,9 +1152,11 @@ export default function App() {
               onAddTalangan={handleAddTalangan}
               onPayTalangan={handlePayTalangan}
               onDeleteTalangan={handleDeleteTalangan}
+              onUpdateTalangan={handleUpdateTalangan}
               onAddHutang={handleAddHutang}
               onPayHutang={handlePayHutang}
               onDeleteHutang={handleDeleteHutang}
+              onUpdateHutang={handleUpdateHutang}
               setViewReceipt={(url, name) => {
                 setReceiptUrl(url);
                 setReceiptName(name);
@@ -1097,6 +1198,11 @@ export default function App() {
               transaksi={transaksi}
               talangan={talangan}
               hutang={hutang}
+              bidang={bidangList}
+              kegiatan={kegiatanList}
+              subKegiatan={subKegiatanList}
+              sumberDana={sumberDanaList}
+              anggaran={anggaranList}
               onImportData={(data: any) => {
                 isImporting.current = true;
                 setTransaksi(data.transaksi);

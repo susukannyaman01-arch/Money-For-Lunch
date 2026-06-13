@@ -15,13 +15,27 @@ import {
   CloudOff,
   RefreshCw
 } from "lucide-react";
-import { Transaksi, Talangan, Hutang } from "../types";
+import { Transaksi, Talangan, Hutang, Bidang, Kegiatan, SubKegiatan, SumberDana, Anggaran } from "../types";
 
 interface SheetsSyncViewProps {
   transaksi: Transaksi[];
   talangan: Talangan[];
   hutang: Hutang[];
-  onImportData: (data: { transaksi: Transaksi[]; talangan: Talangan[]; hutang: Hutang[] }) => void;
+  bidang: Bidang[];
+  kegiatan: Kegiatan[];
+  subKegiatan: SubKegiatan[];
+  sumberDana: SumberDana[];
+  anggaran: Anggaran[];
+  onImportData: (data: { 
+    transaksi: Transaksi[]; 
+    talangan: Talangan[]; 
+    hutang: Hutang[];
+    bidang?: Bidang[];
+    kegiatan?: Kegiatan[];
+    subKegiatan?: SubKegiatan[];
+    sumberDana?: SumberDana[];
+    anggaran?: Anggaran[];
+  }) => void;
   scriptUrl: string;
   setScriptUrl: (url: string) => void;
   isAutoSync: boolean;
@@ -32,6 +46,11 @@ export default function SheetsSyncView({
   transaksi, 
   talangan, 
   hutang,
+  bidang,
+  kegiatan,
+  subKegiatan,
+  sumberDana,
+  anggaran,
   onImportData,
   scriptUrl,
   setScriptUrl,
@@ -71,7 +90,12 @@ export default function SheetsSyncView({
         action: "export",
         transaksi: transaksi,
         talangan: talangan,
-        hutang: hutang
+        hutang: hutang,
+        bidang: bidang,
+        kegiatan: kegiatan,
+        subKegiatan: subKegiatan,
+        sumberDana: sumberDana,
+        anggaran: anggaran
       };
 
       const response = await fetch(scriptUrl, {
@@ -93,7 +117,7 @@ export default function SheetsSyncView({
 
       if (response.ok && (resJson.status === "success" || resJson.success)) {
         setLogMessage({ 
-          text: `Ekspor Sukses! ${transaksi.length} Transaksi, ${talangan.length} Talangan, dan ${hutang.length} Hutang telah diunggah ke Google Sheets.`, 
+          text: `Ekspor Sukses! Data Transaksi, Talangan, Hutang, dan Master Kode Rekening (Anggaran) telah diunggah ke Google Sheets.`, 
           type: "success" 
         });
       } else {
@@ -131,10 +155,15 @@ export default function SheetsSyncView({
         onImportData({
           transaksi: data.transaksi || [],
           talangan: data.talangan || [],
-          hutang: data.hutang || []
+          hutang: data.hutang || [],
+          bidang: data.bidang,
+          kegiatan: data.kegiatan,
+          subKegiatan: data.subKegiatan,
+          sumberDana: data.sumberDana,
+          anggaran: data.anggaran
         });
         setLogMessage({
-          text: `Impor Berhasil! Berhasil menyinkronkan ${data.transaksi?.length || 0} Transaksi, ${data.talangan?.length || 0} Talangan, dan ${data.hutang?.length || 0} Hutang dari Google Sheets ke browser lokal Anda.`,
+          text: `Impor Berhasil! Berhasil menyinkronkan seluruh Transaksi, Talangan, Hutang, serta Master Kode Rekening dari Google Sheets ke browser lokal Anda.`,
           type: "success"
         });
       } else {
@@ -473,6 +502,88 @@ function doPost(e) {
           sheetHut.getRange(2, 1, rowsHut.length, 7).setValues(rowsHut);
         }
       }
+
+      // 4. Sinkronisasi Master Bidang
+      if (data.bidang) {
+        var sheetBid = getOrCreateSheet(ss, "Master_Bidang");
+        sheetBid.clearContents();
+        sheetBid.getRange(1, 1, 1, 2).setValues([["ID_Bidang", "Nama_Bidang"]]);
+        sheetBid.getRange(1, 1, 1, 2).setFontWeight("bold").setBackground("#cbd5e1");
+        
+        if (data.bidang.length > 0) {
+          var rowsBid = data.bidang.map(function(b) {
+            return [b.id_bidang || 0, b.nama_bidang || ""];
+          });
+          sheetBid.getRange(2, 1, rowsBid.length, 2).setValues(rowsBid);
+        }
+      }
+
+      // 5. Sinkronisasi Master Kegiatan
+      if (data.kegiatan) {
+        var sheetKeg = getOrCreateSheet(ss, "Master_Kegiatan");
+        sheetKeg.clearContents();
+        sheetKeg.getRange(1, 1, 1, 3).setValues([["ID_Kegiatan", "ID_Bidang", "Nama_Kegiatan"]]);
+        sheetKeg.getRange(1, 1, 1, 3).setFontWeight("bold").setBackground("#cbd5e1");
+        
+        if (data.kegiatan.length > 0) {
+          var rowsKeg = data.kegiatan.map(function(k) {
+            return [k.id_kegiatan || 0, k.id_bidang || 0, k.nama_kegiatan || ""];
+          });
+          sheetKeg.getRange(2, 1, rowsKeg.length, 3).setValues(rowsKeg);
+        }
+      }
+
+      // 6. Sinkronisasi Master Sub Kegiatan
+      if (data.subKegiatan) {
+        var sheetSub = getOrCreateSheet(ss, "Master_Sub_Kegiatan");
+        sheetSub.clearContents();
+        sheetSub.getRange(1, 1, 1, 3).setValues([["ID_Sub", "ID_Kegiatan", "Nama_Sub_Kegiatan"]]);
+        sheetSub.getRange(1, 1, 1, 3).setFontWeight("bold").setBackground("#cbd5e1");
+        
+        if (data.subKegiatan.length > 0) {
+          var rowsSub = data.subKegiatan.map(function(s) {
+            return [s.id_sub || 0, s.id_kegiatan || 0, s.nama_sub || ""];
+          });
+          sheetSub.getRange(2, 1, rowsSub.length, 3).setValues(rowsSub);
+        }
+      }
+
+      // 7. Sinkronisasi Master Sumber Dana
+      if (data.sumberDana) {
+        var sheetSD = getOrCreateSheet(ss, "Master_Sumber_Dana");
+        sheetSD.clearContents();
+        sheetSD.getRange(1, 1, 1, 2).setValues([["ID_Sumber", "Nama_Sumber_Dana"]]);
+        sheetSD.getRange(1, 1, 1, 2).setFontWeight("bold").setBackground("#cbd5e1");
+        
+        if (data.sumberDana.length > 0) {
+          var rowsSD = data.sumberDana.map(function(sd) {
+            return [sd.id_sumber || 0, sd.nama_sumber || ""];
+          });
+          sheetSD.getRange(2, 1, rowsSD.length, 2).setValues(rowsSD);
+        }
+      }
+
+      // 8. Sinkronisasi Master Anggaran
+      if (data.anggaran) {
+        var sheetAng = getOrCreateSheet(ss, "Master_Anggaran");
+        sheetAng.clearContents();
+        sheetAng.getRange(1, 1, 1, 6).setValues([["ID_Anggaran", "ID_Bidang", "ID_Kegiatan", "ID_Sub", "ID_Sumber", "Pagu_Nominal"]]);
+        sheetAng.getRange(1, 1, 1, 6).setFontWeight("bold").setBackground("#cbd5e1");
+        
+        if (data.anggaran.length > 0) {
+          var rowsAng = data.anggaran.map(function(a) {
+            return [
+              a.id || 0,
+              a.id_bidang || 0,
+              a.id_kegiatan || 0,
+              a.id_sub || 0,
+              a.id_sumber || 0,
+              a.pagu || 0
+            ];
+          });
+          sheetAng.getRange(2, 1, rowsAng.length, 6).setValues(rowsAng);
+        }
+      }
       
       return ContentService.createTextOutput(JSON.stringify({ 
         status: "success", 
@@ -560,6 +671,87 @@ function doGet(e) {
             jumlah: Number(valuesHut[i][4]),
             keterangan: String(valuesHut[i][5]),
             status: String(valuesHut[i][6])
+          });
+        }
+      }
+    }
+
+    // Read Master_Bidang
+    var sheetBid = ss.getSheetByName("Master_Bidang");
+    if (sheetBid) {
+      var valuesBid = sheetBid.getDataRange().getValues();
+      if (valuesBid.length > 1) {
+        response.bidang = [];
+        for (var i = 1; i < valuesBid.length; i++) {
+          response.bidang.push({
+            id_bidang: Number(valuesBid[i][0]),
+            nama_bidang: String(valuesBid[i][1])
+          });
+        }
+      }
+    }
+    
+    // Read Master_Kegiatan
+    var sheetKeg = ss.getSheetByName("Master_Kegiatan");
+    if (sheetKeg) {
+      var valuesKeg = sheetKeg.getDataRange().getValues();
+      if (valuesKeg.length > 1) {
+        response.kegiatan = [];
+        for (var i = 1; i < valuesKeg.length; i++) {
+          response.kegiatan.push({
+            id_kegiatan: Number(valuesKeg[i][0]),
+            id_bidang: Number(valuesKeg[i][1]),
+            nama_kegiatan: String(valuesKeg[i][2])
+          });
+        }
+      }
+    }
+    
+    // Read Master_Sub_Kegiatan
+    var sheetSub = ss.getSheetByName("Master_Sub_Kegiatan");
+    if (sheetSub) {
+      var valuesSub = sheetSub.getDataRange().getValues();
+      if (valuesSub.length > 1) {
+        response.subKegiatan = [];
+        for (var i = 1; i < valuesSub.length; i++) {
+          response.subKegiatan.push({
+            id_sub: Number(valuesSub[i][0]),
+            id_kegiatan: Number(valuesSub[i][1]),
+            nama_sub: String(valuesSub[i][2])
+          });
+        }
+      }
+    }
+    
+    // Read Master_Sumber_Dana
+    var sheetSD = ss.getSheetByName("Master_Sumber_Dana");
+    if (sheetSD) {
+      var valuesSD = sheetSD.getDataRange().getValues();
+      if (valuesSD.length > 1) {
+        response.sumberDana = [];
+        for (var i = 1; i < valuesSD.length; i++) {
+          response.sumberDana.push({
+            id_sumber: Number(valuesSD[i][0]),
+            nama_sumber: String(valuesSD[i][1])
+          });
+        }
+      }
+    }
+    
+    // Read Master_Anggaran
+    var sheetAng = ss.getSheetByName("Master_Anggaran");
+    if (sheetAng) {
+      var valuesAng = sheetAng.getDataRange().getValues();
+      if (valuesAng.length > 1) {
+        response.anggaran = [];
+        for (var i = 1; i < valuesAng.length; i++) {
+          response.anggaran.push({
+            id: Number(valuesAng[i][0]),
+            id_bidang: Number(valuesAng[i][1]),
+            id_kegiatan: Number(valuesAng[i][2]),
+            id_sub: Number(valuesAng[i][3]),
+            id_sumber: Number(valuesAng[i][4]),
+            pagu: Number(valuesAng[i][5])
           });
         }
       }

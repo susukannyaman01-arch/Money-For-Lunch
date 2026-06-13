@@ -43,7 +43,8 @@ import {
   Talangan, 
   Hutang,
   formatTanggal,
-  compareTanggal
+  compareTanggal,
+  formatKeterangan
 } from "../types";
 
 interface DashboardProps {
@@ -249,7 +250,7 @@ export default function Dashboard({
             <strong>${t.kegiatan}</strong><br/>
             <small>${t.subKegiatan}</small>
           </td>
-          <td>${t.keterangan}</td>
+          <td>${formatKeterangan(t.keterangan)}</td>
           <td style="text-align: right; font-weight: bold;">
             ${t.tipe === "Pemasukan" ? "+" : "-"}${formatIDR(t.jumlah)}
           </td>
@@ -703,7 +704,7 @@ export default function Dashboard({
                       </p>
                     </td>
                     <td className="py-3 px-4 text-slate-500 max-w-[250px] whitespace-normal break-words">
-                      {t.keterangan}
+                      {formatKeterangan(t.keterangan)}
                     </td>
                     <td className="py-3 px-4 text-center">
                       {t.bukti ? (

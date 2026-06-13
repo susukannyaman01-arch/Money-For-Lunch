@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { Camera, ListTodo, ArrowUpDown, Handshake, Check, AlertCircle } from "lucide-react";
-import { Transaksi, Talangan, Hutang, formatTanggal, compareTanggal } from "../types";
+import { Transaksi, Talangan, Hutang, formatTanggal, compareTanggal, formatKeterangan } from "../types";
 
 interface RiwayatViewProps {
   transaksi: Transaksi[];
@@ -129,7 +129,7 @@ export default function RiwayatView({
                         </p>
                       </td>
                       <td className="py-3 px-4 text-slate-500 max-w-[200px] whitespace-normal break-words">
-                        {t.keterangan}
+                        {formatKeterangan(t.keterangan)}
                       </td>
                       <td className="py-3 px-4 text-center">
                         {t.bukti ? (
@@ -192,7 +192,7 @@ export default function RiwayatView({
                         <p className="font-extrabold text-emerald-600 text-[9px] uppercase mt-0.5">Ke: {t.subReceiver}</p>
                       </td>
                       <td className="py-3 px-4 text-slate-500 max-w-[200px] whitespace-normal break-words">
-                        {t.keterangan}
+                        {formatKeterangan(t.keterangan)}
                       </td>
                       <td className="py-3 px-4 text-center">
                         {t.bukti ? (
@@ -275,8 +275,8 @@ export default function RiwayatView({
                       </td>
                       <td className="py-3 px-4 max-w-[180px]">
                         <p className="font-extrabold text-slate-700 truncate">{h.subGiver}</p>
-                        <p className="text-[10px] text-slate-400 font-medium truncate mt-0.5">
-                          {h.keterangan || "-"}
+                        <p className="text-[10px] text-slate-400 font-medium mt-0.5">
+                          {formatKeterangan(h.keterangan || "-")}
                         </p>
                       </td>
                       <td className="py-3 px-4 text-center">

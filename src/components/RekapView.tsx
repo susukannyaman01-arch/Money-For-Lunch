@@ -26,7 +26,8 @@ import {
   Hutang,
   Talangan,
   formatTanggal,
-  compareTanggal
+  compareTanggal,
+  formatKeterangan
 } from "../types";
 
 interface RekapViewProps {
@@ -182,7 +183,7 @@ export default function RekapView({
           const labelRef = t.ref_id ? ` (REF: ${t.ref_id})` : "";
           const dateStr = t.tanggal;
           const rowType = t.tipe === "Pemasukan" ? "IN / DEBET" : "OUT / KREDIT";
-          const rowDesc = `${t.keterangan}${labelPeminjam}${labelRef}`;
+          const rowDesc = `${formatKeterangan(t.keterangan)}${labelPeminjam}${labelRef}`;
           const inVal = t.tipe === "Pemasukan" ? formatIDR(t.jumlah) : "-";
           const outVal = t.tipe === "Pengeluaran" ? formatIDR(t.jumlah) : "-";
           return `
@@ -747,7 +748,7 @@ export default function RekapView({
                               </td>
                               <td className="py-2.5 px-3 max-w-[250px] break-words whitespace-normal">
                                 <p className="text-slate-700">
-                                  {t.keterangan}
+                                  {formatKeterangan(t.keterangan)}
                                   {matchingHutang && (
                                     <span className="ml-1.5 inline-flex items-center px-1.5 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-700 text-[9px] rounded font-extrabold uppercase">
                                       Peminjam: {matchingHutang.peminjam}

@@ -323,3 +323,21 @@ export function compareTanggal(tanggalA: string, tanggalB: string): number {
   }
   return tanggalA.localeCompare(tanggalB);
 }
+
+export function formatKeterangan(ket: string | undefined | null): string {
+  if (!ket) return "-";
+  // Pattern to catch "Anggaran ID : 12", "Anggaran ID 12", "Anggaran 12", "ID : 12", "ID 12"
+  return ket.replace(/(Anggaran\s+ID\s*:\s*|Anggaran\s+ID\s+|Anggaran\s+|ID\s*:\s*|\bID\s+)(\d+)/gi, (match, prefix, idStr) => {
+    const idNum = parseInt(idStr, 10);
+    const ang = MASTER_ANGGARAN.find((a) => a.id === idNum);
+    if (ang) {
+      const sub = MASTER_SUB_KEGIATAN.find((s) => s.id_sub === ang.id_sub);
+      const namaKegiatan = sub ? sub.nama_sub : "";
+      if (namaKegiatan) {
+        return `ID : ${idNum} (${namaKegiatan})`;
+      }
+    }
+    return match;
+  });
+}
+
