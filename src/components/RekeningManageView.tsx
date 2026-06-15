@@ -28,6 +28,7 @@ interface RekeningManageViewProps {
   onUpdatePagu: (idAnggaran: number, newPagu: number) => void;
   onDeleteAnggaran: (idAnggaran: number) => boolean; // returns true if success
   onResetMaster: () => void;
+  onAddKegiatan: (namaKegiatan: string, idBidang: number) => number;
 }
 
 export default function RekeningManageView({
@@ -41,7 +42,8 @@ export default function RekeningManageView({
   onAddAnggaran,
   onUpdatePagu,
   onDeleteAnggaran,
-  onResetMaster
+  onResetMaster,
+  onAddKegiatan
 }: RekeningManageViewProps) {
   // Navigation tabs inside Rekening Management
   const [activeTab, setActiveTab] = useState<"list" | "add">("list");
@@ -147,13 +149,8 @@ export default function RekeningManageView({
         showNotification("Ketikkan Nama kegiatan baru!", "error");
         return;
       }
-      // Create new custom Kegiatan
-      kegId = Math.max(...kegiatan.map(k => k.id_kegiatan), 0) + 1;
-      kegiatan.push({
-        id_kegiatan: kegId,
-        id_bidang: selectedBidangId,
-        nama_kegiatan: customKegiatanName.trim()
-      });
+      // Create new custom Kegiatan via parent state callback
+      kegId = onAddKegiatan(customKegiatanName.trim(), selectedBidangId);
     } else {
       if (selectedKegiatanId === "") {
         showNotification("Pilihlah Kegiatan terlebih dahulu!", "error");

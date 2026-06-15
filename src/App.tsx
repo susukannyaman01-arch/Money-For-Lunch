@@ -164,7 +164,68 @@ export default function App() {
   });
 
   const [syncStatus, setSyncStatus] = useState<"idle" | "syncing" | "success" | "error" | null>(null);
+  const [initialSyncDone, setInitialSyncDone] = useState<boolean>(false);
+  const [initialSyncStatus, setInitialSyncStatus] = useState<"none" | "loading" | "success" | "error">("none");
   const isImporting = useRef<boolean>(false);
+
+  // Automated pull (import) from Google Sheets on app startup
+  useEffect(() => {
+    if (!isAutoSync || !scriptUrl) {
+      setInitialSyncDone(true);
+      return;
+    }
+
+    const runInitialPull = async () => {
+      setInitialSyncStatus("loading");
+      isImporting.current = true;
+      try {
+        const targetUrl = scriptUrl + (scriptUrl.includes("?") ? "&" : "?") + "action=import";
+        const response = await fetch(targetUrl, {
+          method: "GET",
+          mode: "cors"
+        });
+
+        if (!response.ok) {
+          throw new Error("HTTP error " + response.status);
+        }
+
+        const data = await response.json();
+        if (data && (data.transaksi || data.talangan || data.hutang)) {
+          // Update all states
+          setTransaksi(data.transaksi || []);
+          setTalangan(data.talangan || []);
+          setHutang(data.hutang || []);
+          if (data.bidang) setBidangList(data.bidang);
+          if (data.kegiatan) setKegiatanList(data.kegiatan);
+          if (data.subKegiatan) setSubKegiatanList(data.subKegiatan);
+          if (data.sumberDana) setSumberDanaList(data.sumberDana);
+          if (data.anggaran) setAnggaranList(data.anggaran);
+
+          // Update localStorage immediately
+          localStorage.setItem("desa_transaksi", JSON.stringify(data.transaksi || []));
+          localStorage.setItem("desa_talangan", JSON.stringify(data.talangan || []));
+          localStorage.setItem("desa_hutang", JSON.stringify(data.hutang || []));
+          if (data.bidang) localStorage.setItem("desa_master_bidang", JSON.stringify(data.bidang));
+          if (data.kegiatan) localStorage.setItem("desa_master_kegiatan", JSON.stringify(data.kegiatan));
+          if (data.subKegiatan) localStorage.setItem("desa_master_sub_kegiatan", JSON.stringify(data.subKegiatan));
+          if (data.sumberDana) localStorage.setItem("desa_master_sumber_dana", JSON.stringify(data.sumberDana));
+          if (data.anggaran) localStorage.setItem("desa_master_anggaran", JSON.stringify(data.anggaran));
+
+          setInitialSyncStatus("success");
+        } else {
+          throw new Error("Struktur data tidak valid");
+        }
+      } catch (err) {
+        console.error("Gagal melakukan pull otomatis saat awal start app:", err);
+        setInitialSyncStatus("error");
+      } finally {
+        isImporting.current = false;
+        setInitialSyncDone(true);
+      }
+    };
+
+    runInitialPull();
+  }, [isAutoSync, scriptUrl]);
 
   // Background Auto-Sync effect triggered by core state mutations
   useEffect(() => {
@@ -172,7 +233,7 @@ export default function App() {
       return;
     }
 
-    if (!isAutoSync || !scriptUrl) {
+    if (!isAutoSync || !scriptUrl || !initialSyncDone) {
       return;
     }
 
@@ -232,7 +293,8 @@ export default function App() {
     sumberDanaList, 
     anggaranList, 
     isAutoSync, 
-    scriptUrl
+    scriptUrl,
+    initialSyncDone
   ]);
 
   // Sync to localStorage
@@ -369,6 +431,17 @@ export default function App() {
   };
 
   // Actions for dynamic master data lists
+  const handleAddKegiatan = (namaKegiatan: string, idBidang: number) => {
+    const nextId = Math.max(...kegiatanList.map((k) => k.id_kegiatan), 0) + 1;
+    const newKegObj = {
+      id_kegiatan: nextId,
+      id_bidang: idBidang,
+      nama_kegiatan: namaKegiatan
+    };
+    setKegiatanList((prev) => [...prev, newKegObj]);
+    return nextId;
+  };
+
   const handleAddSubKegiatan = (namaSub: string, idKegiatan: number) => {
     const nextId = Math.max(...subKegiatanList.map((s) => s.id_sub), 0) + 1;
     const newSubObj = {
@@ -1023,7 +1096,9 @@ export default function App() {
                 <div 
                   onClick={() => setActiveMenu("sheets")}
                   className={`flex items-center space-x-2 bg-white px-3.5 py-2 border rounded-2xl shadow-sm text-xs font-bold transition-all cursor-pointer hover:bg-slate-50 active:scale-95 border-slate-100 ${
-                    !isAutoSync 
+                    initialSyncStatus === "loading"
+                      ? "text-amber-600 bg-amber-50/20 border-amber-100"
+                      : !isAutoSync 
                       ? "text-slate-400" 
                       : syncStatus === "syncing" 
                       ? "text-indigo-650" 
@@ -1032,7 +1107,9 @@ export default function App() {
                       : "text-emerald-600 bg-emerald-50/20 border-emerald-100"
                   }`}
                   title={
-                    !isAutoSync 
+                    initialSyncStatus === "loading"
+                      ? "Sedang mengunduh data terbaru dari Google Sheets saat aplikasi dimulai agar data sinkron..."
+                      : !isAutoSync 
                       ? "Auto-Sync Google Sheets tidak aktif. Klik untuk mengaktifkan." 
                       : syncStatus === "syncing" 
                       ? "Sedang menyinkronkan data ke Google Sheets di latar belakang..." 
@@ -1041,7 +1118,12 @@ export default function App() {
                       : "Semua perubahan otomatis tersinkronisasi ke Google Sheets!"
                   }
                 >
-                  {!isAutoSync ? (
+                  {initialSyncStatus === "loading" ? (
+                    <>
+                      <RefreshCw className="w-4 h-4 text-amber-500 animate-spin" />
+                      <span>Memuat dari Sheets...</span>
+                    </>
+                  ) : !isAutoSync ? (
                     <>
                       <CloudOff className="w-4 h-4 text-slate-400" />
                       <span className="hidden sm:inline">Autosync Off</span>
@@ -1239,6 +1321,7 @@ export default function App() {
               onUpdatePagu={handleUpdatePagu}
               onDeleteAnggaran={handleDeleteAnggaran}
               onResetMaster={handleResetMaster}
+              onAddKegiatan={handleAddKegiatan}
             />
           )}
         </main>
